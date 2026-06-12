@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fale com a Sanglass · Envidraçamento e Vidros</title>
+  <link rel="icon" href="https://sanglass.com.br/wp-content/uploads/2024/05/cropped-Ativo-10-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '189231429083433');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=189231429083433&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+
+    :root {
+      --bg:           #eaf1f8;
+      --bg-soft:      #eef4fa;
+      --bg-card:      #ffffff;
+      --line:         rgba(22,25,34,0.10);
+      --line-strong:  rgba(22,25,34,0.18);
+      --text:         #161922;
+      --text-mute:    #455066;
+      --text-dim:     #64748b;
+      --text-faint:   #94a3b8;
+
+      --blue:         #0089f7;
+      --blue-soft:    #38a8ff;
+      --blue-deep:    #006edf;
+      --navy:         #161922;
+      --amber:        #ffc107;
+
+      --sans:    'Inter', system-ui, sans-serif;
+      --display: 'Montserrat', 'Inter', system-ui, sans-serif;
+    }
+
+    @keyframes pulseGlow { 0%,100% { opacity:.5; } 50% { opacity:1; } }
+    @keyframes bubbleIn  { from { opacity:0; transform: translateY(12px) scale(.98); } to { opacity:1; transform: translateY(0) scale(1); } }
+    @keyframes blink     { 0%,80%,100% { opacity:.25; transform: translateY(0); } 40% { opacity:1; transform: translateY(-3px); } }
+    @keyframes barPulse  { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      min-height: 100svh;
+      overflow-x: hidden;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    html::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(at 20% 80%, #161922 1px, transparent 0);
+      background-size: 3px 3px;
+      pointer-events: none;
+      opacity: .05;
+      z-index: 1;
+    }
+    .bg-orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+    .orb-1 {
+      width: 700px; height: 700px; top: -240px; right: -120px;
+      background: radial-gradient(circle, rgba(0,137,247,.14), transparent 70%);
+      animation: pulseGlow 8s ease-in-out infinite;
+    }
+    .orb-2 {
+      width: 500px; height: 500px; bottom: 6%; left: -160px;
+      background: radial-gradient(circle, rgba(22,25,34,.08), transparent 70%);
+      animation: pulseGlow 12s ease-in-out infinite reverse;
+    }
+
+    /* ─── CHAT SHELL ─── */
+    .chat {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 460px;
+      height: min(760px, 92svh);
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(22,25,34,.16), 0 0 30px rgba(0,137,247,.10);
+    }
+    .chat-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-soft), var(--blue));
+      background-size: 200% 100%;
+      animation: barPulse 4s ease-in-out infinite;
+    }
+
+    /* header */
+    .chat-head {
+      display: flex; align-items: center; gap: 12px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+    .chat-logo-plate {
+      height: 44px; width: 44px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #161922, #1f2a44);
+      overflow: hidden;
+    }
+    .chat-logo-plate img { height: 30px; width: 30px; object-fit: contain; display: block; }
+    .chat-logo-fallback { font-family: var(--display); font-size: 12px; font-weight: 800; color: #fff; line-height: 1; letter-spacing: .04em; }
+    .chat-id { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .chat-name { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.1; }
+    .chat-status { font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+    .chat-status b { color: #16a34a; font-weight: 600; }
+    .chat-tag {
+      margin-left: auto; flex-shrink: 0;
+      font-size: 9px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700;
+      color: var(--blue-deep); opacity: .9;
+      border: 1px solid rgba(0,137,247,.3);
+      background: rgba(0,137,247,.06);
+      padding: 5px 10px; border-radius: 999px;
+    }
+
+    /* messages */
+    .chat-log {
+      flex: 1;
+      overflow-y: auto;
+      padding: 22px 18px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scroll-behavior: smooth;
+    }
+    .chat-log::-webkit-scrollbar { width: 6px; }
+    .chat-log::-webkit-scrollbar-thumb { background: rgba(22,25,34,.14); border-radius: 999px; }
+
+    .msg { display: flex; max-width: 84%; animation: bubbleIn .35s ease-out both; }
+    .msg.bot  { align-self: flex-start; }
+    .msg.user { align-self: flex-end; justify-content: flex-end; }
+    .bubble {
+      padding: 12px 16px;
+      font-size: 14.5px;
+      line-height: 1.55;
+      border-radius: 18px;
+    }
+    .bubble strong { font-weight: 700; color: var(--text); }
+    .msg.user .bubble strong { color: #fff; }
+    .msg.bot .bubble {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-bottom-left-radius: 6px;
+    }
+    .msg.user .bubble {
+      background: linear-gradient(92deg, var(--blue-deep) 0%, var(--blue) 100%);
+      color: #fff;
+      border-bottom-right-radius: 6px;
+      box-shadow: 0 4px 14px rgba(0,137,247,.28);
+    }
+
+    /* typing indicator */
+    .typing .bubble { display: flex; gap: 5px; padding: 15px 18px; }
+    .typing .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-dim); animation: blink 1.3s infinite; }
+    .typing .dot:nth-child(2) { animation-delay: .18s; }
+    .typing .dot:nth-child(3) { animation-delay: .36s; }
+
+    /* footer / input zone */
+    .chat-foot {
+      border-top: 1px solid var(--line);
+      padding: 14px 16px 16px;
+      background: #f6f9fc;
+    }
+
+    /* quick reply chips */
+    .msg.options { align-self: stretch; max-width: 100%; justify-content: flex-end; }
+    .options-wrap {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: flex-end;
+      width: 100%;
+    }
+    .chip {
+      flex: 0 1 auto;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 18px;
+      border: 1.5px solid rgba(0,137,247,.5);
+      background: rgba(0,137,247,.08);
+      color: var(--text);
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 13.5px; font-weight: 600;
+      cursor: pointer;
+      transition: background .18s, border-color .18s, transform .12s, box-shadow .18s;
+      white-space: nowrap;
+    }
+    .chip svg { width: 15px; height: 15px; stroke: var(--blue); fill: none; stroke-width: 2.2; }
+    .chip:hover {
+      background: rgba(0,137,247,.18);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0,137,247,.22);
+    }
+    .chip:active { transform: scale(.97); }
+
+    /* text input bar */
+    .input-bar { display: flex; align-items: center; gap: 8px; }
+    .input-bar.hidden { display: none; }
+    .country-select {
+      flex-shrink: 0;
+      width: 84px;
+      background: #ffffff;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      padding: 13px 8px;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 13px;
+      text-align: center;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .country-select.hidden { display: none; }
+    .field {
+      flex: 1;
+      background: #ffffff;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      padding: 14px 18px;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14.5px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .field::placeholder { color: var(--text-faint); }
+    .field:focus { border-color: rgba(0,137,247,.5); }
+    .send-btn {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: radial-gradient(38.67% 91.17% at 50% 8.83%, var(--blue) 0, var(--blue-deep) 100%);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(0,137,247,.4);
+      transition: filter .2s, transform .12s;
+    }
+    .send-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+    .send-btn:hover { filter: brightness(1.1); transform: scale(1.05); }
+    .send-btn:active { transform: scale(.96); }
+
+    .foot-secure {
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      font-size: 11px; color: var(--text-faint);
+      margin-top: 12px;
+    }
+    .foot-secure svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* highlight card */
+    .vagas-card {
+      border: 1px solid rgba(0,137,247,.3);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(0,137,247,.10), transparent 60%),
+        rgba(0,137,247,.04);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-top: 2px;
+    }
+    .vagas-head { display: flex; align-items: center; gap: 9px; }
+    .vagas-head svg { width: 17px; height: 17px; stroke: var(--blue); fill: none; stroke-width: 2; flex-shrink: 0; }
+    .vagas-head b { font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--text); }
+    .vagas-text { font-size: 13.5px; line-height: 1.55; color: var(--text-mute); }
+    .vagas-text strong { color: var(--text); font-weight: 600; }
+    .vagas-iso {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11.5px; font-weight: 600; color: var(--text-mute);
+      background: rgba(255,193,7,.14);
+      border: 1px solid rgba(255,193,7,.4);
+      padding: 5px 10px; border-radius: 999px;
+      align-self: flex-start;
+    }
+    .vagas-iso svg { width: 13px; height: 13px; stroke: #c68900; fill: none; stroke-width: 2; }
+
+    /* summary card (final) */
+    .summary {
+      border: 1px solid rgba(0,137,247,.3);
+      background: rgba(0,137,247,.05);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-top: 2px;
+    }
+    .summary-row { display: flex; align-items: center; gap: 11px; font-size: 13.5px; color: var(--text-mute); }
+    .summary-row svg { width: 15px; height: 15px; stroke: var(--blue); fill: none; stroke-width: 2; flex-shrink: 0; }
+    .summary-row b { color: var(--text); font-weight: 600; }
+
+    @media (max-width: 520px) {
+      body { padding: 0; }
+      .chat { max-width: 100%; height: 100svh; border-radius: 0; border: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <div class="chat" role="dialog" aria-label="Atendimento Sanglass">
+    <div class="chat-bar"></div>
+
+    <header class="chat-head">
+      <div class="chat-logo-plate">
+        <img src="https://sanglass.com.br/wp-content/uploads/2024/05/cropped-Ativo-10-270x270.png" alt="Sanglass"
+             onerror="this.outerHTML='<span class=&quot;chat-logo-fallback&quot;>SAN</span>'">
+      </div>
+      <div class="chat-id">
+        <div class="chat-name">Sanglass</div>
+        <div class="chat-status"><b>● online</b> · responde na hora</div>
+      </div>
+      <span class="chat-tag">Orçamento</span>
+    </header>
+
+    <div class="chat-log" id="log" aria-live="polite"></div>
+
+    <footer class="chat-foot">
+      <form class="input-bar hidden" id="inputBar" autocomplete="off">
+        <select class="country-select hidden" id="country">
+          <option value="55" selected>🇧🇷 +55</option>
+          <option value="351">🇵🇹 +351</option>
+          <option value="1">🇺🇸 +1</option>
+          <option value="44">🇬🇧 +44</option>
+          <option value="54">🇦🇷 +54</option>
+        </select>
+        <input class="field" id="field" type="text" placeholder="Digite aqui…" aria-label="Sua resposta" />
+        <button class="send-btn" id="send" type="submit" aria-label="Enviar">
+          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+
+      <div class="foot-secure">
+        <i data-lucide="lock"></i>
+        <span>Seus dados estão seguros</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Webhook do Make (cenário Sanglass)
+    const WEBHOOK_URL = 'https://hook.us2.make.com/a7tnd4qehguhnx3ikobokstu9fcbdxpx';
+
+    // Discurso por tipo de necessidade — produtos reais da Sanglass.
+    const NECESSIDADES = {
+      'Envidraçamento de sacada': 'ótima escolha! O <strong>envidraçamento de sacada</strong> protege do vento e da chuva, reduz ruído e ainda valoriza o imóvel — com perfis discretos e vidro de segurança.',
+      'Cobertura de vidro':       'excelente! Nossas <strong>coberturas de vidro</strong> trazem luz natural e proteção com muita elegância, sob medida pro seu espaço.',
+      'Guarda-corpo de vidro':    'perfeito! O <strong>guarda-corpo de vidro</strong> garante segurança com visual limpo e sofisticado, sem obstruir a vista.',
+      'Muro de vidro':            'show! O <strong>muro de vidro</strong> moderniza a fachada e mantém a sensação de amplitude com total segurança.',
+      'Pé-direito duplo':         'ótimo! Soluções de <strong>pé-direito duplo</strong> exigem projeto técnico apurado — e é exatamente a nossa especialidade.',
+      'Projeto corporativo':      'massa! Para <strong>fachadas, retrofit e projetos corporativos</strong> temos engenharia e portfólio de obras de alto padrão.',
+      'Outro / não sei ainda':    'sem problema! Me conta no contato que nosso time desenha a <strong>melhor solução em vidro</strong> pro seu caso.'
+    };
+
+    const log      = document.getElementById('log');
+    const inputBar = document.getElementById('inputBar');
+    const field    = document.getElementById('field');
+    const country  = document.getElementById('country');
+
+    const data = { necessidade: '', nome: '', telefone: '', email: '' };
+
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+    const scrollDown = () => { log.scrollTop = log.scrollHeight; };
+
+    function addUser(text) {
+      const m = document.createElement('div');
+      m.className = 'msg user';
+      m.innerHTML = `<div class="bubble"></div>`;
+      m.querySelector('.bubble').textContent = text;
+      log.appendChild(m);
+      scrollDown();
+    }
+
+    function addBotHTML(html) {
+      const m = document.createElement('div');
+      m.className = 'msg bot';
+      m.innerHTML = `<div class="bubble">${html}</div>`;
+      log.appendChild(m);
+      lucide.createIcons();
+      scrollDown();
+    }
+
+    async function botSay(html, delay = 750) {
+      const t = document.createElement('div');
+      t.className = 'msg bot typing';
+      t.innerHTML = `<div class="bubble"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
+      log.appendChild(t);
+      scrollDown();
+      await sleep(delay);
+      t.remove();
+      addBotHTML(html);
+    }
+
+    function hideInputs() {
+      inputBar.classList.add('hidden');
+    }
+
+    function showChips(options) {
+      hideInputs();
+      const m = document.createElement('div');
+      m.className = 'msg options';
+      const wrap = document.createElement('div');
+      wrap.className = 'options-wrap';
+      options.forEach(opt => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip';
+        b.innerHTML = `<i data-lucide="${opt.icon}"></i>${opt.label}`;
+        b.addEventListener('click', () => {
+          m.remove();
+          opt.onPick(opt.value, opt.label);
+        });
+        wrap.appendChild(b);
+      });
+      m.appendChild(wrap);
+      log.appendChild(m);
+      lucide.createIcons();
+      scrollDown();
+    }
+
+    let activeHandler = null;
+    function showInput({ type = 'text', placeholder = 'Digite aqui…', phone = false, onSubmit }) {
+      hideInputs();
+      inputBar.classList.remove('hidden');
+      field.type = type;
+      field.placeholder = placeholder;
+      field.value = '';
+      field.inputMode = (type === 'tel') ? 'numeric' : (type === 'email' ? 'email' : 'text');
+      country.classList.toggle('hidden', !phone);
+      activeHandler = onSubmit;
+      setTimeout(() => field.focus(), 60);
+      scrollDown();
+    }
+
+    inputBar.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (activeHandler) activeHandler(field.value.trim());
+    });
+
+    /* ─── validators ─── */
+    const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    const phoneDigits = (v) => v.replace(/\D/g, '');
+
+    /* ─── conversation flow ─── */
+    async function start() {
+      await botSay('Olá! 👋 Aqui é o time da <strong>Sanglass</strong>.', 650);
+      await botSay('Vou te ajudar a montar seu <strong>orçamento de vidros</strong> e já te conecto com nosso time. Leva menos de 1 minuto. 🪟', 1200);
+      await askNecessidade();
+    }
+
+    async function askNecessidade() {
+      await botSay('Pra começar, o que você está precisando?', 850);
+      showChips([
+        { label: 'Envidraçamento de sacada', value: 'Envidraçamento de sacada', icon: 'panel-top',   onPick: pickNecessidade },
+        { label: 'Cobertura de vidro',       value: 'Cobertura de vidro',       icon: 'home',        onPick: pickNecessidade },
+        { label: 'Guarda-corpo de vidro',    value: 'Guarda-corpo de vidro',    icon: 'fence',       onPick: pickNecessidade },
+        { label: 'Muro de vidro',            value: 'Muro de vidro',            icon: 'brick-wall',  onPick: pickNecessidade },
+        { label: 'Pé-direito duplo',         value: 'Pé-direito duplo',         icon: 'building-2',  onPick: pickNecessidade },
+        { label: 'Projeto corporativo',      value: 'Projeto corporativo',      icon: 'building',    onPick: pickNecessidade },
+        { label: 'Outro / não sei ainda',    value: 'Outro / não sei ainda',    icon: 'help-circle', onPick: pickNecessidade },
+      ]);
+    }
+
+    async function pickNecessidade(value, label) {
+      data.necessidade = value;
+      addUser(label);
+      hideInputs();
+
+      const blurb = NECESSIDADES[value] || 'perfeito! Nosso time vai te ajudar com a melhor solução em vidro.';
+      await botSay('Boa, ' + blurb, 1100);
+
+      // card de confiança / ISO
+      const m = document.createElement('div');
+      m.className = 'msg bot';
+      m.innerHTML = `
+        <div class="vagas-card">
+          <div class="vagas-head"><i data-lucide="shield-check"></i><b>Por que a Sanglass</b></div>
+          <div class="vagas-text">Projeto, fabricação e instalação com <strong>vidro de segurança</strong> e acabamento de alto padrão. Atendemos <strong>São Paulo e Rio de Janeiro</strong>.</div>
+          <span class="vagas-iso"><i data-lucide="award"></i>Certificação ISO 9001:2015</span>
+        </div>`;
+      log.appendChild(m);
+      lucide.createIcons();
+      scrollDown();
+      await sleep(450);
+
+      await askNome();
+    }
+
+    async function askNome() {
+      await botSay('Como você se chama? (nome completo)', 750);
+      showInput({
+        type: 'text',
+        placeholder: 'Seu nome completo',
+        onSubmit: async (v) => {
+          if (v.replace(/\s/g, '').length < 3) {
+            await botSay('Pode escrever seu nome completinho pra mim? 🙂', 600);
+            return;
+          }
+          data.nome = v;
+          addUser(v);
+          hideInputs();
+          const first = v.split(' ')[0];
+          await botSay(`Prazer, <strong>${escapeHtml(first)}</strong>! 😄`, 650);
+          await askTelefone();
+        }
+      });
+    }
+
+    async function askTelefone() {
+      await botSay('Qual é o seu <strong>telefone / WhatsApp</strong>? É por ele que nosso time fala com você. 📲', 900);
+      showInput({
+        type: 'tel',
+        phone: true,
+        placeholder: '(DDD) 9 0000-0000',
+        onSubmit: async (v) => {
+          const digits = phoneDigits(v);
+          if (digits.length < 8) {
+            await botSay('Hmm, esse número parece incompleto. Pode conferir o DDD + número? 📞', 650);
+            return;
+          }
+          data.telefone = '+' + country.value + digits;
+          addUser('+' + country.value + ' ' + v);
+          hideInputs();
+          await botSay('Anotado! ✅', 600);
+          await askEmail();
+        }
+      });
+    }
+
+    async function askEmail() {
+      await botSay('E o seu melhor <strong>e-mail</strong>? Mando o orçamento e o portfólio por lá também. ✉️', 900);
+      showInput({
+        type: 'email',
+        placeholder: 'seu@email.com',
+        onSubmit: async (v) => {
+          if (!isEmail(v)) {
+            await botSay('Esse e-mail não parece válido. Confere pra mim? 🙂', 650);
+            return;
+          }
+          data.email = v;
+          addUser(v);
+          hideInputs();
+          await finish();
+        }
+      });
+    }
+
+    async function finish() {
+      await botSay('Prontinho! 🎉 É só conferir se está tudo certo:', 950);
+
+      const m = document.createElement('div');
+      m.className = 'msg bot';
+      m.innerHTML = `
+        <div class="summary">
+          <div class="summary-row"><i data-lucide="user"></i><span><b>${escapeHtml(data.nome)}</b></span></div>
+          <div class="summary-row"><i data-lucide="layout-grid"></i><span>${escapeHtml(data.necessidade)}</span></div>
+          <div class="summary-row"><i data-lucide="phone"></i><span>${escapeHtml(data.telefone)}</span></div>
+          <div class="summary-row"><i data-lucide="mail"></i><span>${escapeHtml(data.email)}</span></div>
+        </div>`;
+      log.appendChild(m);
+      lucide.createIcons();
+      scrollDown();
+
+      await botSay(`Nosso time já vai te chamar com o <strong>orçamento de ${escapeHtml(data.necessidade.toLowerCase())}</strong>. Obrigado pelo contato! 🪟💙`, 1300);
+
+      await sendLead();
+    }
+
+    async function sendLead() {
+      const now = new Date();
+      const payload = {
+        nome: data.nome,
+        telefone: data.telefone,
+        email: data.email,
+        necessidade: data.necessidade,
+        origem: 'Chat captura Sanglass',
+        data_contato: now.toISOString(),
+        data_contato_br: now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR')
+      };
+
+      // Dispara o evento Lead no Meta Pixel
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: data.necessidade,
+          content_category: 'Sanglass',
+          origem: 'Chat captura Sanglass'
+        });
+      }
+
+      try {
+        if (WEBHOOK_URL) {
+          await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } else {
+          console.log('Lead (configure WEBHOOK_URL):', payload);
+        }
+      } catch (err) {
+        console.error('Webhook error:', err);
+      }
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => (
+        { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]
+      ));
+    }
+
+    start();
+  </script>
+
+</body>
+</html>
