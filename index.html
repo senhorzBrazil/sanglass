@@ -375,6 +375,23 @@
     // Webhook do Make (cenário Sanglass)
     const WEBHOOK_URL = 'https://hook.us2.make.com/a7tnd4qehguhnx3ikobokstu9fcbdxpx';
 
+    // ─── Captura de UTMs e parâmetros de rastreio (lidos da URL no carregamento) ───
+    const TRACKING = (function () {
+      const p = new URLSearchParams(window.location.search);
+      const get = (k) => (p.get(k) || '').slice(0, 255);
+      return {
+        utm_source:   get('utm_source'),
+        utm_medium:   get('utm_medium'),
+        utm_campaign: get('utm_campaign'),
+        utm_term:     get('utm_term'),
+        utm_content:  get('utm_content'),
+        gclid:        get('gclid'),
+        fbclid:       get('fbclid'),
+        referrer:     (document.referrer || '').slice(0, 255),
+        landing_url:  window.location.href.slice(0, 500)
+      };
+    })();
+
     // Discurso por tipo de necessidade — produtos reais da Sanglass.
     const NECESSIDADES = {
       'Envidraçamento de sacada': 'ótima escolha! O <strong>envidraçamento de sacada</strong> protege do vento e da chuva, reduz ruído e ainda valoriza o imóvel — com perfis discretos e vidro de segurança.',
@@ -609,7 +626,8 @@
         necessidade: data.necessidade,
         origem: 'Chat captura Sanglass',
         data_contato: now.toISOString(),
-        data_contato_br: now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR')
+        data_contato_br: now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR'),
+        ...TRACKING
       };
 
       // Dispara o evento Lead no Meta Pixel
