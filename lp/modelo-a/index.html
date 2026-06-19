@@ -690,6 +690,7 @@ document.querySelectorAll('input[type="tel"]').forEach(maskPhone);
 
 /* ---------- Validation helpers ---------- */
 const WHATS_NUMBER = '5511953720072';
+const WEBHOOK_URL = 'https://hook.us2.make.com/a7tnd4qehguhnx3ikobokstu9fcbdxpx';
 function setErr(input, on){
   const field = input.closest('.field');
   if(!field) return;
@@ -734,6 +735,18 @@ document.getElementById('formWa').addEventListener('submit', e => {
   if(!regiao.value){ setErr(regiao,true); ok=false; } else setErr(regiao,false);
 
   if(!ok){ form.querySelector('.invalid')?.focus(); return; }
+
+  /* Envia o lead (com a região) para o webhook do Make */
+  fetch(WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      nome: nome.value.trim(),
+      telefone: fone.value.trim(),
+      regiao: regiao.value,
+      origem: 'LP Fachada Pele de Vidro'
+    })
+  }).catch(() => {});
 
   let msg = `Olá! Gostaria de um orçamento de fachada em pele de vidro.%0A%0A`;
   msg += `*Nome:* ${nome.value.trim()}%0A`;
