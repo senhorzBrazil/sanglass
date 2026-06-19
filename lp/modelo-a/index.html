@@ -7,6 +7,24 @@
 <title>Fachada em Pele de Vidro | Sanglass Engenharia</title>
 <meta name="description" content="Projeto e instalação de fachada em pele de vidro com engenharia especializada. Mais iluminação, conforto térmico e economia de energia. Peça seu orçamento sem compromisso.">
 
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '189231429083433');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=189231429083433&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -735,6 +753,14 @@ document.getElementById('formWa').addEventListener('submit', e => {
   if(!regiao.value){ setErr(regiao,true); ok=false; } else setErr(regiao,false);
 
   if(!ok){ form.querySelector('.invalid')?.focus(); return; }
+
+  /* Dispara o evento de Lead da Meta após o preenchimento */
+  if(typeof fbq === 'function'){
+    fbq('track', 'Lead', {
+      content_name: 'Orçamento Fachada Pele de Vidro',
+      region: regiao.value
+    });
+  }
 
   /* Envia o lead (com a região) para o webhook do Make */
   fetch(WEBHOOK_URL, {
