@@ -665,17 +665,10 @@ footer.site{background:#08203a;color:#a9c0d6;padding-block:54px 26px}
           <input id="m-nome" name="nome" type="text" placeholder="Como podemos te chamar?" required>
           <div class="err">Informe seu nome.</div>
         </div>
-        <div class="grid-2">
-          <div class="field">
-            <label for="m-fone">WhatsApp <span class="req">*</span></label>
-            <input id="m-fone" name="telefone" type="tel" inputmode="numeric" placeholder="(11) 99999-9999" maxlength="15" required>
-            <div class="err">WhatsApp inválido.</div>
-          </div>
-          <div class="field">
-            <label for="m-email">E-mail</label>
-            <input id="m-email" name="email" type="email" placeholder="seu@email.com">
-            <div class="err">E-mail inválido.</div>
-          </div>
+        <div class="field">
+          <label for="m-fone">WhatsApp <span class="req">*</span></label>
+          <input id="m-fone" name="telefone" type="tel" inputmode="numeric" placeholder="(11) 99999-9999" maxlength="15" required>
+          <div class="err">WhatsApp inválido.</div>
         </div>
         <div class="field">
           <label for="m-regiao">De qual região você é? <span class="req">*</span></label>
@@ -691,15 +684,6 @@ footer.site{background:#08203a;color:#a9c0d6;padding-block:54px 26px}
             <option value="Outra região / Outro estado">Outra região / Outro estado</option>
           </select>
           <div class="err">Selecione sua região.</div>
-        </div>
-        <div class="field">
-          <label for="m-cidade">Cidade / Estado</label>
-          <input id="m-cidade" name="cidade" type="text" placeholder="Ex.: São Paulo / SP">
-        </div>
-        <div class="field">
-          <label for="m-msg">Conte sobre seu projeto</label>
-          <textarea id="m-msg" name="mensagem" rows="3" placeholder="Ex.: cobertura de ~20 m² sobre a área de churrasqueira."></textarea>
-          <div class="hint">Quanto mais detalhes, mais preciso o orçamento.</div>
         </div>
         <button type="submit" class="btn btn-primary btn-block btn-lg">Enviar e receber orçamento</button>
         <div class="form-foot">
@@ -765,6 +749,21 @@ footer.site{background:#08203a;color:#a9c0d6;padding-block:54px 26px}
         <label for="w-fone">WhatsApp <span class="req">*</span></label>
         <input id="w-fone" name="telefone" type="tel" inputmode="numeric" placeholder="(11) 99999-9999" maxlength="15" required>
         <div class="err">Informe um WhatsApp válido.</div>
+      </div>
+      <div class="field">
+        <label for="w-regiao">De qual região você é? <span class="req">*</span></label>
+        <select id="w-regiao" name="regiao" required>
+          <option value="" disabled selected>Selecione sua região</option>
+          <option value="Capital (cidade de São Paulo)">Capital (cidade de São Paulo)</option>
+          <option value="Grande São Paulo / Região Metropolitana">Grande São Paulo / Região Metropolitana</option>
+          <option value="ABC Paulista">ABC Paulista</option>
+          <option value="Litoral / Baixada Santista">Litoral / Baixada Santista</option>
+          <option value="Campinas e Região">Campinas e Região</option>
+          <option value="Interior de São Paulo">Interior de São Paulo</option>
+          <option value="Rio de Janeiro">Rio de Janeiro</option>
+          <option value="Outra região / Outro estado">Outra região / Outro estado</option>
+        </select>
+        <div class="err">Selecione sua região.</div>
       </div>
       <button type="submit" class="btn btn-wa btn-block btn-lg">Abrir conversa no WhatsApp →</button>
     </form>
@@ -856,10 +855,6 @@ function handleForm(formId, successId){
     const fone = form.querySelector('[name="telefone"]');
     if(digits(fone.value).length < 10){ setErr(fone,true); ok=false; } else setErr(fone,false);
 
-    const email = form.querySelector('[name="email"]');
-    if(email && email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ setErr(email,true); ok=false; }
-    else if(email) setErr(email,false);
-
     const regiao = form.querySelector('[name="regiao"]');
     if(regiao && !regiao.value){ setErr(regiao,true); ok=false; } else if(regiao) setErr(regiao,false);
 
@@ -879,20 +874,14 @@ function handleForm(formId, successId){
     sendWebhook({
       nome: get('nome'),
       telefone: get('telefone'),
-      email: get('email'),
-      regiao: regVal,
-      cidade: get('cidade'),
-      mensagem: get('mensagem')
+      regiao: regVal
     });
 
     /* Build pre-filled WhatsApp message — intuitive lead handoff */
     let msg = `Olá! Gostaria de um orçamento de cobertura de vidro.%0A%0A`;
     msg += `*Nome:* ${get('nome')}%0A`;
     msg += `*WhatsApp:* ${get('telefone')}%0A`;
-    if(get('email')) msg += `*E-mail:* ${get('email')}%0A`;
     if(regVal) msg += `*Região:* ${regVal}%0A`;
-    if(get('cidade')) msg += `*Cidade:* ${get('cidade')}%0A`;
-    if(get('mensagem')) msg += `*Projeto:* ${get('mensagem')}%0A`;
 
     /* Show success state */
     form.style.display = 'none';
@@ -938,17 +927,23 @@ document.getElementById('formWa').addEventListener('submit', e => {
   const fone = form.querySelector('[name="telefone"]');
   if(digits(fone.value).length < 10){ setErr(fone,true); ok=false; } else setErr(fone,false);
 
+  const regiao = form.querySelector('[name="regiao"]');
+  if(regiao && !regiao.value){ setErr(regiao,true); ok=false; } else if(regiao) setErr(regiao,false);
+
   if(!ok){ form.querySelector('.invalid')?.focus(); return; }
 
+  const regVal = regiao ? regiao.value : '';
+
   /* Conversão Google Ads + Lead Meta */
-  trackLead('');
+  trackLead(regVal);
 
   /* Envia o lead para o CRM (Make) */
-  sendWebhook({ nome: nome.value.trim(), telefone: fone.value.trim() });
+  sendWebhook({ nome: nome.value.trim(), telefone: fone.value.trim(), regiao: regVal });
 
   let msg = `Olá! Gostaria de um orçamento de cobertura de vidro.%0A%0A`;
   msg += `*Nome:* ${nome.value.trim()}%0A`;
-  msg += `*WhatsApp:* ${fone.value.trim()}`;
+  msg += `*WhatsApp:* ${fone.value.trim()}%0A`;
+  msg += `*Região:* ${regVal}`;
   const url = `https://api.whatsapp.com/send?phone=${WHATS_NUMBER}&text=${msg.replace(/ /g,'%20')}`;
   window.open(url, '_blank');
   closeWa();
