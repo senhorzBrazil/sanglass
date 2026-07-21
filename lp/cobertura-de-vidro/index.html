@@ -466,11 +466,19 @@ footer.site{background:#08203a;color:#a9c0d6;padding-block:54px 26px}
           <div class="err">Informe um WhatsApp válido.</div>
         </div>
         <div class="field">
-          <label>Tipo de cobertura</label>
-          <div class="choice">
-            <label><input type="radio" name="tipo" value="Fixa" checked><span>🏠 Fixa</span></label>
-            <label><input type="radio" name="tipo" value="Retrátil"><span>↔️ Retrátil</span></label>
-          </div>
+          <label for="h-regiao">De qual região você é? <span class="req">*</span></label>
+          <select id="h-regiao" name="regiao" required>
+            <option value="" disabled selected>Selecione sua região</option>
+            <option value="Capital (cidade de São Paulo)">Capital (cidade de São Paulo)</option>
+            <option value="Grande São Paulo / Região Metropolitana">Grande São Paulo / Região Metropolitana</option>
+            <option value="ABC Paulista">ABC Paulista</option>
+            <option value="Litoral / Baixada Santista">Litoral / Baixada Santista</option>
+            <option value="Campinas e Região">Campinas e Região</option>
+            <option value="Interior de São Paulo">Interior de São Paulo</option>
+            <option value="Rio de Janeiro">Rio de Janeiro</option>
+            <option value="Outra região / Outro estado">Outra região / Outro estado</option>
+          </select>
+          <div class="err">Selecione sua região.</div>
         </div>
         <button type="submit" class="btn btn-primary btn-block btn-lg">Solicitar orçamento →</button>
         <div class="form-foot">
@@ -631,11 +639,19 @@ footer.site{background:#08203a;color:#a9c0d6;padding-block:54px 26px}
           </div>
         </div>
         <div class="field">
-          <label>Tipo de cobertura <span class="req">*</span></label>
-          <div class="choice">
-            <label><input type="radio" name="tipo" value="Fixa" checked><span>🏠 Fixa</span></label>
-            <label><input type="radio" name="tipo" value="Retrátil"><span>↔️ Retrátil</span></label>
-          </div>
+          <label for="m-regiao">De qual região você é? <span class="req">*</span></label>
+          <select id="m-regiao" name="regiao" required>
+            <option value="" disabled selected>Selecione sua região</option>
+            <option value="Capital (cidade de São Paulo)">Capital (cidade de São Paulo)</option>
+            <option value="Grande São Paulo / Região Metropolitana">Grande São Paulo / Região Metropolitana</option>
+            <option value="ABC Paulista">ABC Paulista</option>
+            <option value="Litoral / Baixada Santista">Litoral / Baixada Santista</option>
+            <option value="Campinas e Região">Campinas e Região</option>
+            <option value="Interior de São Paulo">Interior de São Paulo</option>
+            <option value="Rio de Janeiro">Rio de Janeiro</option>
+            <option value="Outra região / Outro estado">Outra região / Outro estado</option>
+          </select>
+          <div class="err">Selecione sua região.</div>
         </div>
         <div class="field">
           <label for="m-cidade">Cidade / Estado</label>
@@ -762,7 +778,7 @@ function setErr(input, on){
 function digits(s){ return (s||'').replace(/\D/g,''); }
 
 /* ---------- Lead tracking (Google Ads + Meta) ---------- */
-function trackLead(tipo){
+function trackLead(regiao){
   if(typeof gtag === 'function'){
     gtag('event', 'conversion', {
       'send_to': GADS_SEND_TO,
@@ -774,7 +790,7 @@ function trackLead(tipo){
     fbq('track', 'Lead', {
       content_name: 'Cobertura de Vidro',
       content_category: 'Sanglass',
-      tipo: tipo || ''
+      region: regiao || ''
     });
   }
 }
@@ -805,6 +821,9 @@ function handleForm(formId, successId){
     if(email && email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ setErr(email,true); ok=false; }
     else if(email) setErr(email,false);
 
+    const regiao = form.querySelector('[name="regiao"]');
+    if(regiao && !regiao.value){ setErr(regiao,true); ok=false; } else if(regiao) setErr(regiao,false);
+
     if(!ok){
       form.querySelector('.invalid')?.focus();
       return;
@@ -812,17 +831,17 @@ function handleForm(formId, successId){
 
     /* Coleta os dados */
     const get = n => { const el = form.querySelector(`[name="${n}"]`); return el ? el.value.trim() : ''; };
-    const tipo = form.querySelector('[name="tipo"]:checked')?.value || '';
+    const regVal = get('regiao');
 
     /* Conversão Google Ads + Lead Meta */
-    trackLead(tipo);
+    trackLead(regVal);
 
     /* Envia o lead para o CRM (Make) */
     sendWebhook({
       nome: get('nome'),
       telefone: get('telefone'),
       email: get('email'),
-      tipo_cobertura: tipo,
+      regiao: regVal,
       cidade: get('cidade'),
       mensagem: get('mensagem')
     });
@@ -832,7 +851,7 @@ function handleForm(formId, successId){
     msg += `*Nome:* ${get('nome')}%0A`;
     msg += `*WhatsApp:* ${get('telefone')}%0A`;
     if(get('email')) msg += `*E-mail:* ${get('email')}%0A`;
-    if(tipo) msg += `*Tipo de cobertura:* ${tipo}%0A`;
+    if(regVal) msg += `*Região:* ${regVal}%0A`;
     if(get('cidade')) msg += `*Cidade:* ${get('cidade')}%0A`;
     if(get('mensagem')) msg += `*Projeto:* ${get('mensagem')}%0A`;
 
