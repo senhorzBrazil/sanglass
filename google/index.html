@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-974211119"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-974211119');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0c2949">
@@ -784,6 +792,15 @@ function handleForm(formId, successId){
       return;
     }
 
+    /* Conversão do Google Ads (envio do formulário de lead) */
+    if(typeof gtag === 'function'){
+      gtag('event', 'conversion', {
+        'send_to': 'AW-974211119/6i6CCJvx79McEK-QxdAD',
+        'value': 1.0,
+        'currency': 'BRL'
+      });
+    }
+
     /* Build pre-filled WhatsApp message — intuitive lead handoff */
     const get = n => { const el = form.querySelector(`[name="${n}"]`); return el ? el.value.trim() : ''; };
     const tipo = form.querySelector('[name="tipo"]:checked')?.value || '';
@@ -840,6 +857,15 @@ document.getElementById('formWa').addEventListener('submit', e => {
   if(digits(fone.value).length < 10){ setErr(fone,true); ok=false; } else setErr(fone,false);
 
   if(!ok){ form.querySelector('.invalid')?.focus(); return; }
+
+  /* Conversão do Google Ads (envio do formulário de lead) */
+  if(typeof gtag === 'function'){
+    gtag('event', 'conversion', {
+      'send_to': 'AW-974211119/6i6CCJvx79McEK-QxdAD',
+      'value': 1.0,
+      'currency': 'BRL'
+    });
+  }
 
   let msg = `Olá! Gostaria de um orçamento de fachada em pele de vidro.%0A%0A`;
   msg += `*Nome:* ${nome.value.trim()}%0A`;

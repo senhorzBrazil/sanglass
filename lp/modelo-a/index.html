@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-974211119"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-974211119');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0c2949">
@@ -759,6 +767,15 @@ document.getElementById('formWa').addEventListener('submit', e => {
     fbq('track', 'Lead', {
       content_name: 'Orçamento Fachada Pele de Vidro',
       region: regiao.value
+    });
+  }
+
+  /* Conversão do Google Ads (envio do formulário de lead) */
+  if(typeof gtag === 'function'){
+    gtag('event', 'conversion', {
+      'send_to': 'AW-974211119/6i6CCJvx79McEK-QxdAD',
+      'value': 1.0,
+      'currency': 'BRL'
     });
   }
 
