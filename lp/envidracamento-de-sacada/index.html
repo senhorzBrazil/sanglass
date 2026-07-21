@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-974211119"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-974211119');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c2949">
+<title>Envidraçamento de Sacada | Sanglass Engenharia</title>
+<meta name="description" content="Envidraçamento de sacada com o San System Sanglass: painéis de vidro sem esquadrias, abertura total ou parcial. Mais conforto térmico e acústico, segurança e aproveitamento da sacada. Peça seu orçamento sem compromisso.">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '189231429083433');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=189231429083433&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   DESIGN SYSTEM — tokens
+   ========================================================= */
+:root{
+  --blue-900:#0c2949;
+  --blue-700:#0074c1;
+  --blue-500:#0094d8;
+  --blue-400:#00ace4;
+  --blue-100:#e7f3fb;
+  --ink:#16202c;
+  --muted:#5b6b7c;
+  --line:#e4eaf0;
+  --bg:#ffffff;
+  --bg-soft:#f5f8fb;
+  --wa:#25d366;
+  --wa-dark:#1da851;
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow-sm:0 1px 2px rgba(12,41,73,.06),0 2px 8px rgba(12,41,73,.06);
+  --shadow-md:0 8px 30px rgba(12,41,73,.12);
+  --shadow-lg:0 20px 60px rgba(12,41,73,.18);
+  --container:1160px;
+  --space:clamp(64px,9vw,112px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden;max-width:100%}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;font-weight:800}
+:focus-visible{outline:3px solid var(--blue-400);outline-offset:2px;border-radius:6px}
+
+.container{width:min(100% - 40px,var(--container));margin-inline:auto}
+.eyebrow{
+  display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--blue-700);margin-bottom:14px;
+}
+.section{padding-block:var(--space)}
+.section-head{max-width:680px;margin-bottom:48px}
+.section-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px}
+.section-head p{color:var(--muted);font-size:1.08rem}
+.center{text-align:center;margin-inline:auto}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-weight:700;font-size:1rem;padding:15px 28px;border-radius:999px;
+  border:0;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,background .2s ease;
+  line-height:1;white-space:nowrap;
+}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:22px;height:22px;flex:none}
+.btn-primary{background:var(--blue-700);color:#fff;box-shadow:0 8px 20px rgba(0,116,193,.35)}
+.btn-primary:hover{background:var(--blue-900);box-shadow:0 12px 26px rgba(0,116,193,.45)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 8px 20px rgba(37,211,102,.35)}
+.btn-wa:hover{background:var(--wa-dark)}
+.btn-ghost{background:#fff;color:var(--blue-900);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--blue-400);color:var(--blue-700)}
+.btn-lg{padding:18px 34px;font-size:1.06rem}
+.btn-block{width:100%}
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+.topbar{background:var(--blue-900);color:#cfe0f0;font-size:.86rem}
+.topbar .container{display:flex;align-items:center;justify-content:center;gap:26px;
+  flex-wrap:wrap;padding-block:9px;text-align:center}
+.topbar a{color:#cfe0f0;display:inline-flex;align-items:center;gap:7px}
+.topbar a:hover{color:#fff}
+.topbar svg{width:15px;height:15px;flex:none}
+
+/* =========================================================
+   HEADER / NAV
+   ========================================================= */
+header.site{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding-block:14px;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--blue-900);font-size:1.18rem}
+.brand .logo{
+  width:40px;height:40px;border-radius:11px;flex:none;overflow:hidden;
+  background:linear-gradient(135deg,#161922,#1f2a44);
+  display:grid;place-items:center;color:#fff;
+}
+.brand .logo img{width:28px;height:28px;object-fit:contain;display:block}
+.logo-fallback{font-size:11px;font-weight:800;letter-spacing:.04em;color:#fff}
+.brand small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.18em;
+  color:var(--muted);text-transform:uppercase;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-weight:600;color:var(--ink);font-size:.96rem}
+.nav-links a:hover{color:var(--blue-700)}
+.nav-menu-cta{display:none}
+.nav-menu-cta:hover{color:#fff}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.menu-toggle{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.menu-toggle svg{width:28px;height:28px;color:var(--blue-900)}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero{position:relative;background:var(--blue-900);color:#fff;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(115deg,rgba(12,41,73,.96) 0%,rgba(12,41,73,.78) 45%,rgba(0,116,193,.55) 100%),
+    url('https://sanglass.com.br/wp-content/uploads/2025/08/ft-1.png') center/cover;
+}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;
+  align-items:center;padding-block:clamp(56px,8vw,96px)}
+.hero h1{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:20px}
+.hero h1 span{color:var(--blue-400)}
+.hero p.lead{font-size:1.18rem;color:#d6e4f2;max-width:520px;margin-bottom:30px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+.hero-trust{display:flex;flex-wrap:wrap;gap:22px}
+.hero-trust div{display:flex;align-items:center;gap:9px;font-size:.94rem;color:#cfe0f0}
+.hero-trust svg{width:20px;height:20px;color:var(--blue-400);flex:none}
+
+/* HERO FORM CARD */
+.lead-card{
+  background:#fff;color:var(--ink);border-radius:var(--radius);padding:30px;
+  box-shadow:var(--shadow-lg);
+}
+.lead-card .lc-head{margin-bottom:20px}
+.lead-card .lc-head h2{font-size:1.4rem;color:var(--blue-900)}
+.lead-card .lc-head p{font-size:.94rem;color:var(--muted);margin-top:5px}
+.lead-card .lc-steps{display:flex;gap:8px;margin-top:14px}
+.lc-steps span{flex:1;height:5px;border-radius:99px;background:var(--line)}
+.lc-steps span.on{background:var(--blue-400)}
+
+/* =========================================================
+   FORM (shared)
+   ========================================================= */
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:7px;color:var(--ink)}
+.field .req{color:#e23b3b}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:var(--radius-sm);
+  font:inherit;font-size:1rem;background:#fff;transition:border .15s ease,box-shadow .15s ease;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--blue-400);box-shadow:0 0 0 3px rgba(0,172,228,.18)
+}
+.field input.invalid,.field select.invalid{border-color:#e23b3b;box-shadow:0 0 0 3px rgba(226,59,59,.12)}
+.field .hint{font-size:.8rem;color:var(--muted);margin-top:6px}
+.field .err{font-size:.8rem;color:#e23b3b;margin-top:6px;display:none}
+.field.show-err .err{display:block}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice label{
+  display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;
+  border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:12px;
+  font-weight:600;font-size:.92rem;transition:.15s;text-align:center;margin:0
+}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice label:hover{border-color:var(--blue-400)}
+.choice input:checked + span{color:var(--blue-700)}
+.choice label:has(input:checked){border-color:var(--blue-700);background:var(--blue-100)}
+.form-foot{display:flex;align-items:center;gap:9px;margin-top:8px;font-size:.82rem;color:var(--muted)}
+.form-foot svg{width:16px;height:16px;color:var(--wa-dark);flex:none}
+.success{
+  display:none;text-align:center;padding:20px 6px
+}
+.success.on{display:block}
+.success svg{width:56px;height:56px;color:var(--wa);margin:0 auto 14px}
+.success h3{color:var(--blue-900);font-size:1.3rem;margin-bottom:8px}
+.success p{color:var(--muted)}
+
+/* =========================================================
+   TRUST STRIP / STATS
+   ========================================================= */
+.stats{background:var(--blue-900);color:#fff}
+.stats .container{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  padding-block:48px;text-align:center}
+.stat .num{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;color:var(--blue-400);line-height:1}
+.stat .lbl{font-size:.86rem;color:#cfe0f0;margin-top:8px;letter-spacing:.02em}
+
+/* =========================================================
+   BENEFITS
+   ========================================================= */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;
+  box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.card .ic{
+  width:54px;height:54px;border-radius:14px;display:grid;place-items:center;
+  background:var(--blue-100);color:var(--blue-700);margin-bottom:18px
+}
+.card .ic svg{width:28px;height:28px}
+.card h3{font-size:1.2rem;margin-bottom:9px;color:var(--blue-900)}
+.card p{color:var(--muted);font-size:.97rem}
+
+/* =========================================================
+   PROCESS
+   ========================================================= */
+.process{background:var(--bg-soft)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step}
+.step{position:relative;padding-top:8px}
+.step .n{
+  width:46px;height:46px;border-radius:50%;background:var(--blue-700);color:#fff;
+  display:grid;place-items:center;font-weight:800;font-size:1.15rem;margin-bottom:16px;
+  box-shadow:0 6px 16px rgba(0,116,193,.3)
+}
+.step h3{font-size:1.08rem;margin-bottom:7px;color:var(--blue-900)}
+.step p{color:var(--muted);font-size:.94rem}
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery a{
+  position:relative;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:1/1;
+  box-shadow:var(--shadow-sm)
+}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.gallery a::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(12,41,73,.55));
+  opacity:0;transition:.3s
+}
+.gallery a:hover img{transform:scale(1.08)}
+.gallery a:hover::after{opacity:1}
+.gallery a span{
+  position:absolute;left:12px;bottom:10px;color:#fff;font-size:.82rem;font-weight:600;
+  opacity:0;transform:translateY(6px);transition:.3s;z-index:1
+}
+.gallery a:hover span{opacity:1;transform:none}
+
+/* =========================================================
+   FINAL CTA + FORM
+   ========================================================= */
+.cta{position:relative;background:var(--blue-900);color:#fff;overflow:hidden}
+.cta::before{
+  content:"";position:absolute;inset:0;opacity:.16;
+  background:url('https://sanglass.com.br/wp-content/uploads/2025/08/ft-11.png') center/cover
+}
+.cta-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.cta-grid h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:18px}
+.cta-grid h2 span{color:var(--blue-400)}
+.cta-grid .lead{color:#d6e4f2;font-size:1.1rem;margin-bottom:26px;max-width:480px}
+.cta-list{list-style:none;display:grid;gap:14px;margin-bottom:8px}
+.cta-list li{display:flex;align-items:flex-start;gap:12px;color:#e3eef8}
+.cta-list svg{width:22px;height:22px;color:var(--blue-400);flex:none;margin-top:2px}
+.form-panel{background:#fff;color:var(--ink);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow-lg)}
+.form-panel h3{color:var(--blue-900);font-size:1.4rem;margin-bottom:6px}
+.form-panel .sub{color:var(--muted);font-size:.95rem;margin-bottom:22px}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer.site{background:#08203a;color:#a9c0d6;padding-block:54px 26px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.foot-grid h4{color:#fff;font-size:1rem;margin-bottom:16px;letter-spacing:.02em}
+.foot-grid p,.foot-grid a{font-size:.92rem;color:#a9c0d6;margin-bottom:9px;display:block}
+.foot-grid a:hover{color:#fff}
+.foot-brand{display:flex;align-items:center;gap:11px;color:#fff;font-weight:800;font-size:1.2rem;margin-bottom:14px}
+.foot-brand .logo{width:40px;height:40px;border-radius:11px;overflow:hidden;
+  background:linear-gradient(135deg,#161922,#1f2a44);display:grid;place-items:center}
+.foot-brand .logo img{width:28px;height:28px;object-fit:contain;display:block}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;
+  text-align:center;font-size:.84rem;color:#7e96ad}
+
+/* =========================================================
+   FLOATING WHATSAPP
+   ========================================================= */
+.fab{
+  position:fixed;right:20px;bottom:22px;z-index:60;display:inline-flex;align-items:center;gap:10px;
+  background:var(--wa);color:#fff;font-weight:700;padding:14px 20px;border-radius:999px;
+  box-shadow:0 10px 30px rgba(37,211,102,.45);transition:transform .15s ease
+}
+.fab:hover{transform:translateY(-2px)}
+.fab svg{width:26px;height:26px}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.fab{animation:pulse 2.4s infinite}
+
+/* =========================================================
+   WHATSAPP CAPTURE MODAL
+   ========================================================= */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(8,20,36,.6);backdrop-filter:blur(3px);
+  display:none;align-items:center;justify-content:center;z-index:80;padding:20px;
+}
+.modal-overlay.on{display:flex}
+.modal{
+  background:#fff;border-radius:var(--radius);padding:32px;width:min(100%,420px);
+  box-shadow:var(--shadow-lg);position:relative;animation:pop .25s ease
+}
+@keyframes pop{from{transform:translateY(14px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.modal-close{
+  position:absolute;top:14px;right:14px;background:none;border:0;cursor:pointer;
+  color:var(--muted);width:34px;height:34px;border-radius:50%;display:grid;place-items:center
+}
+.modal-close:hover{background:var(--bg-soft);color:var(--ink)}
+.modal-close svg{width:20px;height:20px}
+.modal .wa-badge{
+  width:54px;height:54px;border-radius:14px;background:#e9fbf0;color:var(--wa-dark);
+  display:grid;place-items:center;margin-bottom:16px
+}
+.modal .wa-badge svg{width:30px;height:30px}
+.modal h3{color:var(--blue-900);font-size:1.35rem;margin-bottom:6px}
+.modal .sub{color:var(--muted);font-size:.95rem;margin-bottom:22px}
+
+/* =========================================================
+   CERTIFICATIONS
+   ========================================================= */
+.certs{background:var(--bg-soft)}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cert{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease
+}
+.cert:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.cert img{width:100%;aspect-ratio:1031/677;object-fit:cover;display:block;background:var(--blue-100)}
+.cert .cert-body{padding:20px 22px}
+.cert .cert-body p{color:var(--muted);font-size:.96rem}
+@media (max-width:980px){.certs-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.certs-grid{grid-template-columns:1fr}}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .lead-card{max-width:480px}
+  .cta-grid{grid-template-columns:1fr;gap:40px}
+  .cards{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .gallery{grid-template-columns:repeat(3,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  .topbar .container{gap:14px;font-size:.8rem}
+  .nav-links,.nav-cta .btn-ghost,.nav-cta .btn-primary{display:none}
+  .menu-toggle{display:block}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+    align-items:stretch;background:#fff;padding:18px 20px;border-bottom:1px solid var(--line);box-shadow:var(--shadow-md);gap:16px}
+  .nav-links.open .nav-menu-cta{display:inline-flex;width:100%;margin-top:4px}
+  header.site .nav{position:relative}
+  .stats .container{grid-template-columns:1fr 1fr;gap:30px}
+  .cards{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+  .fab span{display:none}
+  .fab{padding:14px}
+  /* equal-size, full-width hero buttons on mobile */
+  .hero-actions{flex-direction:column;gap:12px}
+  .hero-actions .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site">
+  <div class="container nav">
+    <a href="#" class="brand">
+      <span class="logo">
+        <img src="https://sanglass.com.br/wp-content/uploads/2024/05/cropped-Ativo-10-270x270.png" alt="Sanglass Engenharia"
+             onerror="this.outerHTML='<span class=&quot;logo-fallback&quot;>SAN</span>'">
+      </span>
+      <span>Sanglass<small>Engenharia</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#vantagens">Vantagens</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#orcamento" class="btn btn-primary nav-menu-cta">Solicitar orçamento</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#orcamento" class="btn btn-primary">Solicitar orçamento</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="eyebrow" style="color:var(--blue-400)">Envidraçamento de Sacada • Vidro sem esquadrias • San System</span>
+      <h1>Envidraçamento de <span>sacada</span> para aproveitar seu espaço o ano todo</h1>
+      <p class="lead">Projeto, fabricação e instalação com o San System Sanglass: painéis de vidro sem esquadrias, de fácil deslocamento e abertura total ou parcial. Mais conforto térmico e acústico, segurança e sofisticação para a sua varanda.</p>
+      <div class="hero-actions">
+        <a href="#orcamento" class="btn btn-primary btn-lg">Quero meu orçamento grátis</a>
+        <a id="waHero" href="https://api.whatsapp.com/send?phone=5511953720072&text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20envidra%C3%A7amento%20de%20sacada." target="_blank" rel="noopener" class="btn btn-wa btn-lg">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.519 5.26l-.999 3.648 3.819-1.007zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+      <div class="hero-trust">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> +20 anos de experiência</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Sedes em SP e RJ</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Equipe própria de engenharia</div>
+      </div>
+    </div>
+
+    <!-- HERO LEAD FORM -->
+    <div class="lead-card">
+      <div class="lc-head">
+        <h2>Receba seu orçamento</h2>
+        <p>Resposta em até 1 dia útil. Sem compromisso.</p>
+      </div>
+      <form id="formHero" novalidate>
+        <div class="field">
+          <label for="h-nome">Nome <span class="req">*</span></label>
+          <input id="h-nome" name="nome" type="text" placeholder="Seu nome" required>
+          <div class="err">Informe seu nome.</div>
+        </div>
+        <div class="field">
+          <label for="h-fone">WhatsApp <span class="req">*</span></label>
+          <input id="h-fone" name="telefone" type="tel" inputmode="numeric" placeholder="(11) 99999-9999" maxlength="15" required>
+          <div class="err">Informe um WhatsApp válido.</div>
+        </div>
+        <div class="field">
+          <label for="h-regiao">De qual região você é? <span class="req">*</span></label>
+          <select id="h-regiao" name="regiao" required>
+            <option value="" disabled selected>Selecione sua região</option>
+            <option value="Capital (cidade de São Paulo)">Capital (cidade de São Paulo)</option>
+            <option value="Grande São Paulo / Região Metropolitana">Grande São Paulo / Região Metropolitana</option>
+            <option value="ABC Paulista">ABC Paulista</option>
+            <option value="Litoral / Baixada Santista">Litoral / Baixada Santista</option>
+            <option value="Campinas e Região">Campinas e Região</option>
+            <option value="Interior de São Paulo">Interior de São Paulo</option>
+            <option value="Rio de Janeiro">Rio de Janeiro</option>
+            <option value="Outra região / Outro estado">Outra região / Outro estado</option>
+          </select>
+          <div class="err">Selecione sua região.</div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Solicitar orçamento →</button>
+        <div class="form-foot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Seus dados estão seguros e não serão compartilhados.
+        </div>
+      </form>
+      <div class="success" id="successHero">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10.01-3-3"/></svg>
+        <h3>Quase lá!</h3>
+        <p>Estamos te direcionando ao WhatsApp para finalizar seu pedido de orçamento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="num" data-count="250" data-suffix="+">+250</div><div class="lbl">Colaboradores</div></div>
+    <div class="stat"><div class="num" data-count="3200" data-suffix=" m²">3.200 m²</div><div class="lbl">Área fabril</div></div>
+    <div class="stat"><div class="num">SP / RJ</div><div class="lbl">Sedes</div></div>
+    <div class="stat"><div class="num" data-count="20" data-suffix="+">+20</div><div class="lbl">Anos de experiência</div></div>
+  </div>
+</section>
+
+<!-- ================= BENEFITS ================= -->
+<section class="section" id="vantagens">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Por que envidraçar a sacada</span>
+      <h2>Mais uso, conforto e valor no seu apartamento</h2>
+      <p>Transforme a varanda num ambiente que você aproveita o ano inteiro — faça chuva ou faça sol.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div>
+        <h3>Aproveite a sacada o ano todo</h3>
+        <p>Receba família e amigos com conforto — churrasco, jantar ou happy hour — faça chuva ou faça sol.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10v4a1 1 0 0 0 1 1h3l4 4V5L7 9H4a1 1 0 0 0-1 1z"/><path d="M16 9a5 5 0 0 1 0 6M19.5 6.5a9 9 0 0 1 0 11"/></svg></div>
+        <h3>Conforto acústico</h3>
+        <p>Isola a casa da poluição sonora do trânsito e das obras, para mais tranquilidade no dia a dia.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg></div>
+        <h3>Conforto térmico</h3>
+        <p>Protege o ambiente das trocas de temperatura, mantendo a varanda agradável em qualquer estação.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M5 12l4-4M5 12l4 4M19 12l-4-4M19 12l-4 4"/></svg></div>
+        <h3>San System sem esquadrias</h3>
+        <p>Painéis de vidro de fácil deslocamento, com abertura total ou parcial e visual limpo, sem perfis aparentes.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Segurança para a família</h3>
+        <p>Vidro de segurança e sistema robusto: proteção contra quedas sem abrir mão da vista e da luz natural.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+        <h3>Valoriza o imóvel</h3>
+        <p>Um acabamento sofisticado que moderniza a fachada e agrega valor de mercado ao apartamento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="section process" id="processo">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Da primeira conversa à instalação</h2>
+      <p>Um processo de engenharia transparente, sem surpresas em obra.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Contato e briefing</h3>
+        <p>Você nos envia os dados do projeto pelo formulário ou WhatsApp.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Visita e projeto</h3>
+        <p>Fazemos a visita técnica, medimos o vão e montamos a proposta ideal.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Fabricação</h3>
+        <p>Vidros e estrutura produzidos com qualidade na nossa área fabril.</p>
+      </div>
+      <div class="step">
+        <div class="n">4</div>
+        <h3>Instalação técnica</h3>
+        <p>Montagem feita por equipe própria especializada, com segurança e precisão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="section" id="galeria">
+  <div class="container">
+    <div class="section-head center" style="text-align:center">
+      <span class="eyebrow">Portfólio</span>
+      <h2>Sacadas que já envidraçamos</h2>
+      <p>Projetos de envidraçamento de sacada entregues para clientes residenciais e corporativos.</p>
+    </div>
+    <div class="gallery">
+      <a href="https://sanglass.com.br/wp-content/uploads/2025/08/ft-2.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/ft-2.png" alt="Envidraçamento de sacada residencial" loading="lazy"><span>Sacada envidraçada</span></a>
+      <a href="https://sanglass.com.br/wp-content/uploads/2025/08/ft-3.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/ft-3.png" alt="Sacada de vidro San System" loading="lazy"><span>San System</span></a>
+      <a href="https://sanglass.com.br/wp-content/uploads/2025/08/ft-4.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/ft-4.png" alt="Varanda envidraçada" loading="lazy"><span>Varanda</span></a>
+      <a href="https://sanglass.com.br/wp-content/uploads/2025/08/ft-5-copiar.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/ft-5-copiar.png" alt="Sacada de vidro sem esquadrias" loading="lazy"><span>Vidro sem esquadrias</span></a>
+      <a href="https://sanglass.com.br/wp-content/uploads/2025/08/ft-7-copiar.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/ft-7-copiar.png" alt="Sacada envidraçada com vista" loading="lazy"><span>Vista preservada</span></a>
+      <a href="https://sanglass.com.br/wp-content/uploads/2025/08/ft-8-copiar.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/ft-8-copiar.png" alt="Sacada de vidro em apartamento" loading="lazy"><span>Apartamento</span></a>
+      <a href="https://sanglass.com.br/wp-content/uploads/2025/08/ft-9-copiar.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/ft-9-copiar.png" alt="Sacada envidraçada moderna" loading="lazy"><span>Projeto residencial</span></a>
+      <a href="https://sanglass.com.br/wp-content/uploads/2025/08/ft-10-copiar.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/ft-10-copiar.png" alt="Varanda gourmet envidraçada" loading="lazy"><span>Varanda gourmet</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICAÇÕES ================= -->
+<section class="section certs" id="certificacoes">
+  <div class="container">
+    <div class="section-head center" style="text-align:center">
+      <span class="eyebrow">Certificações e reconhecimentos</span>
+      <h2>Autoridade e qualidade comprovadas</h2>
+      <p>Credibilidade reconhecida pelos principais órgãos e certificações do setor.</p>
+    </div>
+    <div class="certs-grid">
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-1.jpg" alt="CREA — Conselho Regional de Engenharia e Agronomia" loading="lazy">
+        <div class="cert-body"><p>Time de engenharia qualificado! Emitimos ART (Anotação de Responsabilidade Técnica) de todos os projetos executados.</p></div>
+      </div>
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-6-1.jpg" alt="Certificado ISO 9001 de Qualidade" loading="lazy">
+        <div class="cert-body"><p>Única empresa do segmento com Certificado ISO 9001 de Qualidade, monitorando cada processo produtivo para oferecer o que há de melhor.</p></div>
+      </div>
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-2-1.jpg" alt="Instituto Falcão Bauer" loading="lazy">
+        <div class="cert-body"><p>Todos os produtos que a empresa disponibiliza para seus clientes são testados e aprovados pelo Instituto Falcão Bauer.</p></div>
+      </div>
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-3.jpg" alt="ABNT — Associação Brasileira de Normas Técnicas" loading="lazy">
+        <div class="cert-body"><p>Somos associados à ABNT e participamos de comitês que estabelecem os padrões técnicos de aplicação.</p></div>
+      </div>
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-4.jpg" alt="Casa Cor" loading="lazy">
+        <div class="cert-body"><p>Somos expositores das amostras da Casa Cor São Paulo e Rio de Janeiro.</p></div>
+      </div>
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-5.jpg" alt="Instituto Cidades &amp; Condomínios" loading="lazy">
+        <div class="cert-body"><p>Eleita por 8 anos como a melhor empresa do segmento de envidraçamento.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA + FORM ================= -->
+<section class="cta section" id="orcamento">
+  <div class="container cta-grid">
+    <div>
+      <span class="eyebrow" style="color:var(--blue-400)">Solicite agora</span>
+      <h2>Peça o <span>orçamento</span> do seu envidraçamento de sacada</h2>
+      <p class="lead">Preencha o formulário e nossa equipe de engenharia entra em contato com a melhor solução e o melhor preço para o seu projeto.</p>
+      <ul class="cta-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Visita técnica sem compromisso</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Orçamento detalhado e transparente</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Atendimento personalizado via WhatsApp</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Envie a foto ou a planta do local, se tiver</li>
+      </ul>
+    </div>
+
+    <div class="form-panel">
+      <h3>Solicitar orçamento</h3>
+      <p class="sub">Leva menos de 1 minuto. Campos com <span class="req" style="color:#e23b3b">*</span> são obrigatórios.</p>
+      <form id="formMain" novalidate>
+        <div class="field">
+          <label for="m-nome">Nome completo <span class="req">*</span></label>
+          <input id="m-nome" name="nome" type="text" placeholder="Como podemos te chamar?" required>
+          <div class="err">Informe seu nome.</div>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="m-fone">WhatsApp <span class="req">*</span></label>
+            <input id="m-fone" name="telefone" type="tel" inputmode="numeric" placeholder="(11) 99999-9999" maxlength="15" required>
+            <div class="err">WhatsApp inválido.</div>
+          </div>
+          <div class="field">
+            <label for="m-email">E-mail</label>
+            <input id="m-email" name="email" type="email" placeholder="seu@email.com">
+            <div class="err">E-mail inválido.</div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="m-regiao">De qual região você é? <span class="req">*</span></label>
+          <select id="m-regiao" name="regiao" required>
+            <option value="" disabled selected>Selecione sua região</option>
+            <option value="Capital (cidade de São Paulo)">Capital (cidade de São Paulo)</option>
+            <option value="Grande São Paulo / Região Metropolitana">Grande São Paulo / Região Metropolitana</option>
+            <option value="ABC Paulista">ABC Paulista</option>
+            <option value="Litoral / Baixada Santista">Litoral / Baixada Santista</option>
+            <option value="Campinas e Região">Campinas e Região</option>
+            <option value="Interior de São Paulo">Interior de São Paulo</option>
+            <option value="Rio de Janeiro">Rio de Janeiro</option>
+            <option value="Outra região / Outro estado">Outra região / Outro estado</option>
+          </select>
+          <div class="err">Selecione sua região.</div>
+        </div>
+        <div class="field">
+          <label for="m-cidade">Cidade / Estado</label>
+          <input id="m-cidade" name="cidade" type="text" placeholder="Ex.: São Paulo / SP">
+        </div>
+        <div class="field">
+          <label for="m-msg">Conte sobre seu projeto</label>
+          <textarea id="m-msg" name="mensagem" rows="3" placeholder="Ex.: sacada de ~6 m² em apartamento, quero fechar com vidro."></textarea>
+          <div class="hint">Quanto mais detalhes, mais preciso o orçamento.</div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Enviar e receber orçamento</button>
+        <div class="form-foot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Ao enviar, você concorda em ser contatado pela Sanglass. Seus dados estão protegidos.
+        </div>
+      </form>
+      <div class="success" id="successMain">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10.01-3-3"/></svg>
+        <h3>Pedido enviado!</h3>
+        <p>Estamos te levando ao WhatsApp para confirmar e agilizar seu atendimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="logo"><img src="https://sanglass.com.br/wp-content/uploads/2024/05/cropped-Ativo-10-270x270.png" alt="Sanglass Engenharia" onerror="this.outerHTML='<span class=&quot;logo-fallback&quot;>SAN</span>'"></span>
+          Sanglass Engenharia
+        </div>
+        <p>Especialistas em envidraçamento de sacada (San System), cobertura de vidro, guarda-corpo, muro de vidro e structural glazing para projetos residenciais e corporativos.</p>
+      </div>
+      <div>
+        <h4>São Paulo</h4>
+        <p>Jardim Independência</p>
+        <a href="tel:+551138541122">📞 (11) 3854-1122</a>
+        <a href="https://api.whatsapp.com/send?phone=5511953720072" target="_blank" rel="noopener">💬 (11) 95372-0072</a>
+      </div>
+      <div>
+        <h4>Rio de Janeiro</h4>
+        <p>Vargem Pequena</p>
+        <a href="https://api.whatsapp.com/send?phone=5521981644785" target="_blank" rel="noopener">💬 (21) 98164-4785</a>
+        <a href="mailto:contato@sanglass.com.br">✉️ contato@sanglass.com.br</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Sanglass Engenharia — Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<!-- ================= WHATSAPP CAPTURE MODAL ================= -->
+<div class="modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-labelledby="waModalTitle">
+  <div class="modal">
+    <button class="modal-close" id="waModalClose" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="wa-badge">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.519 5.26l-.999 3.648 3.819-1.007zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </div>
+    <h3 id="waModalTitle">Falar no WhatsApp</h3>
+    <p class="sub">Deixe seu nome e número para iniciarmos seu atendimento.</p>
+    <form id="formWa" novalidate>
+      <div class="field">
+        <label for="w-nome">Nome <span class="req">*</span></label>
+        <input id="w-nome" name="nome" type="text" placeholder="Seu nome" required>
+        <div class="err">Informe seu nome.</div>
+      </div>
+      <div class="field">
+        <label for="w-fone">WhatsApp <span class="req">*</span></label>
+        <input id="w-fone" name="telefone" type="tel" inputmode="numeric" placeholder="(11) 99999-9999" maxlength="15" required>
+        <div class="err">Informe um WhatsApp válido.</div>
+      </div>
+      <button type="submit" class="btn btn-wa btn-block btn-lg">Abrir conversa no WhatsApp →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+<a class="fab" href="https://api.whatsapp.com/send?phone=5511953720072&text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20envidra%C3%A7amento%20de%20sacada." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.519 5.26l-.999 3.648 3.819-1.007zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+/* ---------- Config ---------- */
+const WHATS_NUMBER = '5511953720072';
+const WEBHOOK_URL  = 'https://hook.us2.make.com/a7tnd4qehguhnx3ikobokstu9fcbdxpx';
+const ORIGEM       = 'LP Envidraçamento de Sacada';
+const GADS_SEND_TO = 'AW-974211119/6i6CCJvx79McEK-QxdAD';
+
+/* ---------- Mobile menu ---------- */
+const toggle = document.getElementById('menuToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+/* ---------- Phone mask (BR) ---------- */
+function maskPhone(el){
+  el.addEventListener('input', () => {
+    let v = el.value.replace(/\D/g,'').slice(0,11);
+    if(v.length > 6){
+      el.value = v.length > 10
+        ? `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`
+        : `(${v.slice(0,2)}) ${v.slice(2,6)}-${v.slice(6)}`;
+    } else if(v.length > 2){
+      el.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    } else {
+      el.value = v;
+    }
+  });
+}
+document.querySelectorAll('input[type="tel"]').forEach(maskPhone);
+
+/* ---------- Validation helpers ---------- */
+function setErr(input, on){
+  const field = input.closest('.field');
+  if(!field) return;
+  field.classList.toggle('show-err', on);
+  input.classList.toggle('invalid', on);
+}
+function digits(s){ return (s||'').replace(/\D/g,''); }
+
+/* ---------- Lead tracking (Google Ads + Meta) ---------- */
+function trackLead(regiao){
+  if(typeof gtag === 'function'){
+    gtag('event', 'conversion', {
+      'send_to': GADS_SEND_TO,
+      'value': 1.0,
+      'currency': 'BRL'
+    });
+  }
+  if(typeof fbq === 'function'){
+    fbq('track', 'Lead', {
+      content_name: 'Envidraçamento de Sacada',
+      content_category: 'Sanglass',
+      region: regiao || ''
+    });
+  }
+}
+/* ---------- Envia o lead para o webhook do Make ---------- */
+function sendWebhook(payload){
+  if(!WEBHOOK_URL) return;
+  fetch(WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...payload, origem: ORIGEM })
+  }).catch(() => {});
+}
+
+/* ---------- Form handler (builds WhatsApp lead message) ---------- */
+function handleForm(formId, successId){
+  const form = document.getElementById(formId);
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    let ok = true;
+
+    const nome = form.querySelector('[name="nome"]');
+    if(!nome.value.trim()){ setErr(nome,true); ok=false; } else setErr(nome,false);
+
+    const fone = form.querySelector('[name="telefone"]');
+    if(digits(fone.value).length < 10){ setErr(fone,true); ok=false; } else setErr(fone,false);
+
+    const email = form.querySelector('[name="email"]');
+    if(email && email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ setErr(email,true); ok=false; }
+    else if(email) setErr(email,false);
+
+    const regiao = form.querySelector('[name="regiao"]');
+    if(regiao && !regiao.value){ setErr(regiao,true); ok=false; } else if(regiao) setErr(regiao,false);
+
+    if(!ok){
+      form.querySelector('.invalid')?.focus();
+      return;
+    }
+
+    /* Coleta os dados */
+    const get = n => { const el = form.querySelector(`[name="${n}"]`); return el ? el.value.trim() : ''; };
+    const regVal = get('regiao');
+
+    /* Conversão Google Ads + Lead Meta */
+    trackLead(regVal);
+
+    /* Envia o lead para o CRM (Make) */
+    sendWebhook({
+      nome: get('nome'),
+      telefone: get('telefone'),
+      email: get('email'),
+      regiao: regVal,
+      cidade: get('cidade'),
+      mensagem: get('mensagem')
+    });
+
+    /* Build pre-filled WhatsApp message — intuitive lead handoff */
+    let msg = `Olá! Gostaria de um orçamento de envidraçamento de sacada.%0A%0A`;
+    msg += `*Nome:* ${get('nome')}%0A`;
+    msg += `*WhatsApp:* ${get('telefone')}%0A`;
+    if(get('email')) msg += `*E-mail:* ${get('email')}%0A`;
+    if(regVal) msg += `*Região:* ${regVal}%0A`;
+    if(get('cidade')) msg += `*Cidade:* ${get('cidade')}%0A`;
+    if(get('mensagem')) msg += `*Projeto:* ${get('mensagem')}%0A`;
+
+    /* Show success state */
+    form.style.display = 'none';
+    document.getElementById(successId).classList.add('on');
+
+    /* Open WhatsApp with the lead data */
+    const url = `https://api.whatsapp.com/send?phone=${WHATS_NUMBER}&text=${msg.replace(/ /g,'%20')}`;
+    setTimeout(() => window.open(url, '_blank'), 600);
+  });
+}
+handleForm('formHero','successHero');
+handleForm('formMain','successMain');
+
+/* ---------- WhatsApp capture modal ---------- */
+const waModal = document.getElementById('waModal');
+function openWa(e){
+  if(e) e.preventDefault();
+  waModal.classList.add('on');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('w-nome').focus(), 60);
+}
+function closeWa(){
+  waModal.classList.remove('on');
+  document.body.style.overflow = '';
+}
+/* Intercept every direct-to-WhatsApp entry point */
+document.getElementById('waHero').addEventListener('click', openWa);
+document.querySelector('.fab').addEventListener('click', openWa);
+document.getElementById('waModalClose').addEventListener('click', closeWa);
+waModal.addEventListener('click', e => { if(e.target === waModal) closeWa(); });
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && waModal.classList.contains('on')) closeWa();
+});
+
+document.getElementById('formWa').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  let ok = true;
+
+  const nome = form.querySelector('[name="nome"]');
+  if(!nome.value.trim()){ setErr(nome,true); ok=false; } else setErr(nome,false);
+
+  const fone = form.querySelector('[name="telefone"]');
+  if(digits(fone.value).length < 10){ setErr(fone,true); ok=false; } else setErr(fone,false);
+
+  if(!ok){ form.querySelector('.invalid')?.focus(); return; }
+
+  /* Conversão Google Ads + Lead Meta */
+  trackLead('');
+
+  /* Envia o lead para o CRM (Make) */
+  sendWebhook({ nome: nome.value.trim(), telefone: fone.value.trim() });
+
+  let msg = `Olá! Gostaria de um orçamento de envidraçamento de sacada.%0A%0A`;
+  msg += `*Nome:* ${nome.value.trim()}%0A`;
+  msg += `*WhatsApp:* ${fone.value.trim()}`;
+  const url = `https://api.whatsapp.com/send?phone=${WHATS_NUMBER}&text=${msg.replace(/ /g,'%20')}`;
+  window.open(url, '_blank');
+  closeWa();
+});
+
+/* ---------- Animated counters ---------- */
+const counters = document.querySelectorAll('[data-count]');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = +el.dataset.count;
+    const suffix = el.dataset.suffix || '';
+    let cur = 0;
+    const step = Math.ceil(target / 60);
+    const tick = () => {
+      cur += step;
+      if(cur >= target){ cur = target; }
+      el.textContent = (target >= 1000 ? cur.toLocaleString('pt-BR') : cur) + suffix;
+      if(cur < target) requestAnimationFrame(tick);
+    };
+    tick();
+    io.unobserve(el);
+  });
+}, {threshold:.5});
+counters.forEach(c => io.observe(c));
+</script>
+</body>
+</html>
