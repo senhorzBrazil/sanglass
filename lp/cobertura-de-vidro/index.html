@@ -353,6 +353,22 @@ footer.site{background:#08203a;color:#a9c0d6;padding-block:54px 26px}
 .modal .sub{color:var(--muted);font-size:.95rem;margin-bottom:22px}
 
 /* =========================================================
+   CERTIFICATIONS
+   ========================================================= */
+.certs{background:var(--bg-soft)}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cert{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease
+}
+.cert:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.cert img{width:100%;aspect-ratio:1031/677;object-fit:cover;display:block;background:var(--blue-100)}
+.cert .cert-body{padding:20px 22px}
+.cert .cert-body p{color:var(--muted);font-size:.96rem}
+@media (max-width:980px){.certs-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.certs-grid{grid-template-columns:1fr}}
+
+/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width:980px){
@@ -387,24 +403,6 @@ footer.site{background:#08203a;color:#a9c0d6;padding-block:54px 26px}
 </style>
 </head>
 <body>
-
-<!-- ================= TOP BAR ================= -->
-<div class="topbar">
-  <div class="container">
-    <a href="tel:+551138541122">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      SP (11) 3854-1122
-    </a>
-    <a href="tel:+5521981644785">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      RJ (21) 98164-4785
-    </a>
-    <a href="mailto:contato@sanglass.com.br">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-      contato@sanglass.com.br
-    </a>
-  </div>
-</div>
 
 <!-- ================= HEADER ================= -->
 <header class="site">
@@ -602,6 +600,43 @@ footer.site{background:#08203a;color:#a9c0d6;padding-block:54px 26px}
       <a href="https://sanglass.com.br/wp-content/uploads/2025/08/Cobertura-13-copiar.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/Cobertura-13-copiar.png" alt="Cobertura de vidro retrátil" loading="lazy"><span>Cobertura retrátil</span></a>
       <a href="https://sanglass.com.br/wp-content/uploads/2025/08/Cobertura-14-copiar.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/Cobertura-14-copiar.png" alt="Cobertura de vidro corporativa" loading="lazy"><span>Projeto corporativo</span></a>
       <a href="https://sanglass.com.br/wp-content/uploads/2025/08/Cobertura-15-copiar.png" target="_blank" rel="noopener"><img src="https://sanglass.com.br/wp-content/uploads/2025/08/Cobertura-15-copiar.png" alt="Cobertura de vidro sobre piscina" loading="lazy"><span>Área de lazer</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICAÇÕES ================= -->
+<section class="section certs" id="certificacoes">
+  <div class="container">
+    <div class="section-head center" style="text-align:center">
+      <span class="eyebrow">Certificações e reconhecimentos</span>
+      <h2>Autoridade e qualidade comprovadas</h2>
+      <p>Credibilidade reconhecida pelos principais órgãos e certificações do setor.</p>
+    </div>
+    <div class="certs-grid">
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-1.jpg" alt="CREA — Conselho Regional de Engenharia e Agronomia" loading="lazy">
+        <div class="cert-body"><p>Time de engenharia qualificado! Emitimos ART (Anotação de Responsabilidade Técnica) de todos os projetos executados.</p></div>
+      </div>
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-6-1.jpg" alt="Certificado ISO 9001 de Qualidade" loading="lazy">
+        <div class="cert-body"><p>Única empresa do segmento com Certificado ISO 9001 de Qualidade, monitorando cada processo produtivo para oferecer o que há de melhor.</p></div>
+      </div>
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-2-1.jpg" alt="Instituto Falcão Bauer" loading="lazy">
+        <div class="cert-body"><p>Todos os produtos que a empresa disponibiliza para seus clientes são testados e aprovados pelo Instituto Falcão Bauer.</p></div>
+      </div>
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-3.jpg" alt="ABNT — Associação Brasileira de Normas Técnicas" loading="lazy">
+        <div class="cert-body"><p>Somos associados à ABNT e participamos de comitês que estabelecem os padrões técnicos de aplicação.</p></div>
+      </div>
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-4.jpg" alt="Casa Cor" loading="lazy">
+        <div class="cert-body"><p>Somos expositores das amostras da Casa Cor São Paulo e Rio de Janeiro.</p></div>
+      </div>
+      <div class="cert">
+        <img src="https://sanglass.com.br/wp-content/uploads/2023/09/Prancheta-1-copiar-5.jpg" alt="Instituto Cidades &amp; Condomínios" loading="lazy">
+        <div class="cert-body"><p>Eleita por 8 anos como a melhor empresa do segmento de envidraçamento.</p></div>
+      </div>
     </div>
   </div>
 </section>
