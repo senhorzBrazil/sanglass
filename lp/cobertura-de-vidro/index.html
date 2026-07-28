@@ -783,6 +783,17 @@ const WEBHOOK_URL  = 'https://hook.us2.make.com/a7tnd4qehguhnx3ikobokstu9fcbdxpx
 const ORIGEM       = 'LP Cobertura de Vidro';
 const GADS_SEND_TO = 'AW-974211119/6i6CCJvx79McEK-QxdAD';
 
+/* ---------- Captação de UTMs + click-ids (first-touch, persistida) ---------- */
+const TRACKING = (function(){
+  const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+  let data = {};
+  try { data = JSON.parse(sessionStorage.getItem('sg_tracking') || '{}'); } catch(e){}
+  const p = new URLSearchParams(window.location.search);
+  keys.forEach(k => { const v = p.get(k); if(v) data[k] = v; });
+  try { sessionStorage.setItem('sg_tracking', JSON.stringify(data)); } catch(e){}
+  return data;
+})();
+
 /* ---------- Mobile menu ---------- */
 const toggle = document.getElementById('menuToggle');
 const links = document.getElementById('navLinks');
@@ -838,7 +849,7 @@ function sendWebhook(payload){
   fetch(WEBHOOK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...payload, origem: ORIGEM })
+    body: JSON.stringify({ ...payload, ...TRACKING, origem: ORIGEM })
   }).catch(() => {});
 }
 
