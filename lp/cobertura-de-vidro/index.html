@@ -846,10 +846,17 @@ function trackLead(regiao){
 /* ---------- Envia o lead para o webhook do Make ---------- */
 function sendWebhook(payload){
   if(!WEBHOOK_URL) return;
+  const agora = new Date();
   fetch(WEBHOOK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...payload, ...TRACKING, origem: ORIGEM })
+    body: JSON.stringify({
+      ...payload,
+      ...TRACKING,
+      origem: ORIGEM,
+      data_origem: agora.toISOString(),
+      data_origem_br: agora.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+    })
   }).catch(() => {});
 }
 
