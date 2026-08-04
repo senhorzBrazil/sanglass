@@ -76,10 +76,7 @@ h1,h2,h3,h4{line-height:1.08;letter-spacing:-.028em;font-weight:700;text-wrap:ba
 
 .wrap{width:min(100% - (var(--gut)*2),var(--maxw));margin-inline:auto}
 .section{padding-block:var(--sp)}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:11px;font-size:.72rem;font-weight:700;
-  letter-spacing:.22em;text-transform:uppercase;color:var(--azure);
-}
+.eyebrow{display:none}
 .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--azure)}
 .eyebrow.on-dark{color:var(--azure-400)}
 .eyebrow.on-dark::before{background:var(--azure-400)}
@@ -136,7 +133,8 @@ header.site.solid .menu-toggle{color:var(--navy)}
 .hero{position:relative;min-height:94vh;display:flex;flex-direction:column;justify-content:center;gap:clamp(26px,4vw,46px);
   margin-top:-76px;padding-top:76px;color:#fff;overflow:hidden;background:var(--navy)}
 .hero__bg{position:absolute;inset:0;z-index:0}
-.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.16}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.16;animation:kb 22s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.05)}to{transform:scale(1.17)}}
 .hero__bg::after{content:"";position:absolute;inset:0;
   background:radial-gradient(920px 540px at 80% 4%,rgba(43,178,236,.20),transparent 60%),
   linear-gradient(180deg,rgba(10,37,67,.86) 0%,rgba(9,26,46,.9) 52%,rgba(8,22,40,.97) 100%)}
@@ -223,14 +221,25 @@ header.site.solid .menu-toggle{color:var(--navy)}
 .process{background:var(--navy);color:#fff;position:relative;overflow:hidden}
 .process .sec-head h2{color:#fff}
 .process .sec-head p{color:#a9c4dc}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:54px;counter-reset:s}
-.pstep{padding:0 30px 0 0;position:relative}
-.pstep:not(:last-child)::after{content:"";position:absolute;top:23px;left:46px;right:0;height:1px;background:rgba(255,255,255,.16)}
-.pstep .dot{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.28);display:grid;place-items:center;
-  font-weight:700;font-size:1.05rem;color:var(--azure-400);background:var(--navy);position:relative;z-index:1}
-.pstep h4{font-size:1.12rem;margin:22px 0 8px;letter-spacing:-.02em}
-.pstep p{color:#a9c4dc;font-size:.95rem;max-width:24ch}
-@media(max-width:820px){.steps{grid-template-columns:1fr;gap:34px}.pstep{padding:0}.pstep:not(:last-child)::after{display:none}}
+.tl{position:relative;max-width:640px;margin:clamp(36px,5vw,56px) auto 0}
+.tl::before{content:"";position:absolute;left:26px;top:24px;bottom:24px;width:2px;
+  background:linear-gradient(rgba(43,178,236,.6),rgba(43,178,236,.05))}
+.tl-item{position:relative;display:grid;grid-template-columns:54px 1fr;gap:20px;padding-bottom:18px}
+.tl-item:last-child{padding-bottom:0}
+.tl-num{width:54px;height:54px;border-radius:50%;background:var(--navy);border:1.5px solid rgba(43,178,236,.55);
+  display:grid;place-items:center;font-weight:800;font-size:1.16rem;color:var(--azure-400);
+  position:relative;z-index:1;box-shadow:0 0 0 7px var(--navy)}
+.tl-card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:15px;
+  padding:20px 22px;transition:.35s var(--ease)}
+.tl-card:hover{background:rgba(255,255,255,.08);transform:translateX(5px);border-color:rgba(43,178,236,.4)}
+.tl-card h4{font-size:1.14rem;margin-bottom:6px;letter-spacing:-.02em}
+.tl-card p{color:#a9c4dc;font-size:.96rem}
+@media(max-width:480px){
+  .tl::before{left:22px}
+  .tl-item{grid-template-columns:46px 1fr;gap:15px}
+  .tl-num{width:46px;height:46px;font-size:1.05rem;box-shadow:0 0 0 6px var(--navy)}
+  .tl-card{padding:16px 18px}
+}
 
 /* ============ SEGMENTOS ============ */
 .seg .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:12px}
@@ -256,11 +265,17 @@ header.site.solid .menu-toggle{color:var(--navy)}
 @media(max-width:820px){.pf-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.pf-grid{grid-template-columns:1fr}}
 
-/* ============ CLIENTES ============ */
-.clients .lbl{text-align:center;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);font-weight:600;margin-bottom:34px}
-.logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:34px 54px}
-.logos img{height:42px;width:auto;opacity:.55;filter:grayscale(1);transition:.3s}
-.logos img:hover{opacity:1;filter:none}
+/* ============ CLIENTES — faixa carrossel infinito ============ */
+.marquee{background:#fff;border-block:1px solid var(--hair);padding:22px 0;overflow:hidden;position:relative}
+.marquee .cap{text-align:center;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);font-weight:600;margin-bottom:18px}
+.marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+.marquee::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+.mq-track{display:flex;align-items:center;gap:clamp(40px,6vw,74px);width:max-content;animation:mq 34s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+.mq-track img{height:38px;width:auto;flex:none;opacity:.5;filter:grayscale(1);transition:.3s}
+.mq-track img:hover{opacity:1;filter:none}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ============ CTA + LEAD ============ */
 .cta{position:relative;overflow:hidden;background:var(--navy);color:#fff}
@@ -350,12 +365,15 @@ footer.site{background:var(--ink);color:#93a8bd;padding-block:clamp(56px,7vw,80p
 .modal h3{color:var(--navy);font-size:1.34rem;letter-spacing:-.025em}
 .modal .sub{color:var(--muted);font-size:.94rem;margin:6px 0 20px}
 
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;
+  background:linear-gradient(90deg,var(--azure),var(--azure-400));box-shadow:0 0 10px rgba(43,178,236,.55);transition:width .12s linear}
 .reveal{opacity:0;transform:translateY(26px);transition:.8s var(--ease)}
 .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-scroll .bar{animation:none}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero__bg img,.marquee .track{animation:none}}
 </style>
 </head>
 <body>
+<div class="progress" id="pg"></div>
 
 <!-- HEADER -->
 <header class="site" id="hd">
@@ -395,9 +413,9 @@ footer.site{background:var(--ink);color:#93a8bd;padding-block:clamp(56px,7vw,80p
   </div>
   <div class="wrap hero__strip">
     <div class="row">
-      <figure class="htile"><img src="/lp/engenharia/assets/portfolio-albert-sabin.jpg" alt="Fachada de vidro Hospital Albert Sabin"><figcaption><span class="s">Saúde</span><span class="t">Hospital Albert Sabin</span></figcaption></figure>
-      <figure class="htile"><img src="/lp/engenharia/assets/portfolio-corporativo.jpg" alt="Edifício corporativo com brise e ACM"><figcaption><span class="s">Corporativo</span><span class="t">Brise + ACM</span></figcaption></figure>
-      <figure class="htile"><img src="/lp/engenharia/assets/portfolio-villa-lobos.jpg" alt="Fachada em ACM Shopping Villa-Lobos"><figcaption><span class="s">Varejo</span><span class="t">Fachada em ACM</span></figcaption></figure>
+      <figure class="htile reveal"><img src="/lp/engenharia/assets/portfolio-albert-sabin.jpg" alt="Fachada de vidro Hospital Albert Sabin"><figcaption><span class="s">Saúde</span><span class="t">Hospital Albert Sabin</span></figcaption></figure>
+      <figure class="htile reveal"><img src="/lp/engenharia/assets/portfolio-corporativo.jpg" alt="Edifício corporativo com brise e ACM"><figcaption><span class="s">Corporativo</span><span class="t">Brise + ACM</span></figcaption></figure>
+      <figure class="htile reveal"><img src="/lp/engenharia/assets/portfolio-villa-lobos.jpg" alt="Fachada em ACM Shopping Villa-Lobos"><figcaption><span class="s">Varejo</span><span class="t">Fachada em ACM</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -409,6 +427,33 @@ footer.site{background:var(--ink);color:#93a8bd;padding-block:clamp(56px,7vw,80p
     <div class="aud">
       <span>Construtoras</span><span>Incorporadoras</span><span>Escritórios de arquitetura</span><span>Gerenciadoras de obras</span>
     </div>
+  </div>
+</div>
+
+<!-- CLIENTES — faixa carrossel infinito -->
+<div class="marquee" aria-label="Empresas que confiaram na engenharia da Sanglass">
+  <p class="cap">Empresas que confiaram na engenharia da Sanglass</p>
+  <div class="mq-track">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/hospital-albert-sabin.png" alt="Hospital Albert Sabin">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/Logo_unimed1.svg_.png" alt="Unimed">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/logo-brasilit.png" alt="Brasilit">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/logoTjsp.png" alt="TJSP">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/logo-unip-home.png" alt="UNIP">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/Allianz_Parque_Logo.png" alt="Allianz Parque">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/CONCENTRIX-LOGOS-PNG-500x250px.png" alt="Concentrix">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/CPTM_Logo.svg_.png" alt="CPTM">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/pague-menos-logo.png" alt="Pague Menos">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/12/Bradesco_logo.png" alt="Bradesco">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/hospital-albert-sabin.png" alt="" aria-hidden="true">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/Logo_unimed1.svg_.png" alt="" aria-hidden="true">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/logo-brasilit.png" alt="" aria-hidden="true">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/logoTjsp.png" alt="" aria-hidden="true">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/logo-unip-home.png" alt="" aria-hidden="true">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/Allianz_Parque_Logo.png" alt="" aria-hidden="true">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/CONCENTRIX-LOGOS-PNG-500x250px.png" alt="" aria-hidden="true">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/CPTM_Logo.svg_.png" alt="" aria-hidden="true">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/pague-menos-logo.png" alt="" aria-hidden="true">
+    <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/12/Bradesco_logo.png" alt="" aria-hidden="true">
   </div>
 </div>
 
@@ -455,16 +500,16 @@ footer.site{background:var(--ink);color:#93a8bd;padding-block:clamp(56px,7vw,80p
       </div>
       <p class="reveal" style="color:var(--muted);max-width:34ch">Do envidraçamento estrutural ao ACM e às coberturas — engenharia completa para o mercado corporativo, comercial e de infraestrutura.</p>
     </div>
-    <div class="sol-index reveal">
-      <div class="sol-row"><span class="idx">01</span><h3>Fachada &amp; Pele de vidro</h3><p>Pele de vidro contínua para edifícios corporativos e grandes empreendimentos.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-      <div class="sol-row"><span class="idx">02</span><h3>Fachada cortina</h3><p>Curtain wall autoportante, com desempenho térmico e estanqueidade.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-      <div class="sol-row"><span class="idx">03</span><h3>Structural Glazing</h3><p>Envidraçamento estrutural com vidro colado, sem perfis aparentes.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-      <div class="sol-row"><span class="idx">04</span><h3>Spider Glass</h3><p>Vidro agrafado com aranhas de inox para átrios e grandes vãos.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-      <div class="sol-row"><span class="idx">05</span><h3>Sistemas Grid &amp; Stick</h3><p>Fachadas em alumínio e vidro dimensionadas ao desempenho da obra.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-      <div class="sol-row"><span class="idx">06</span><h3>Revestimento em ACM</h3><p>Fachada em alumínio composto para prédios comerciais e corporativos.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-      <div class="sol-row"><span class="idx">07</span><h3>Esquadrias de alumínio</h3><p>Esquadrias especiais e de alto padrão para edifícios e infraestrutura.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-      <div class="sol-row"><span class="idx">08</span><h3>Coberturas de vidro</h3><p>Coberturas fixas, retráteis e marquises para entradas e átrios.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-      <div class="sol-row"><span class="idx">09</span><h3>Guarda-corpos &amp; fechamentos</h3><p>Guarda-corpos de vidro, muros de vidro e fechamentos corporativos.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    <div class="sol-index">
+      <div class="sol-row reveal"><span class="idx">01</span><h3>Fachada &amp; Pele de vidro</h3><p>Pele de vidro contínua para edifícios corporativos e grandes empreendimentos.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sol-row reveal"><span class="idx">02</span><h3>Fachada cortina</h3><p>Curtain wall autoportante, com desempenho térmico e estanqueidade.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sol-row reveal"><span class="idx">03</span><h3>Structural Glazing</h3><p>Envidraçamento estrutural com vidro colado, sem perfis aparentes.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sol-row reveal"><span class="idx">04</span><h3>Spider Glass</h3><p>Vidro agrafado com aranhas de inox para átrios e grandes vãos.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sol-row reveal"><span class="idx">05</span><h3>Sistemas Grid &amp; Stick</h3><p>Fachadas em alumínio e vidro dimensionadas ao desempenho da obra.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sol-row reveal"><span class="idx">06</span><h3>Revestimento em ACM</h3><p>Fachada em alumínio composto para prédios comerciais e corporativos.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sol-row reveal"><span class="idx">07</span><h3>Esquadrias de alumínio</h3><p>Esquadrias especiais e de alto padrão para edifícios e infraestrutura.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sol-row reveal"><span class="idx">08</span><h3>Coberturas de vidro</h3><p>Coberturas fixas, retráteis e marquises para entradas e átrios.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sol-row reveal"><span class="idx">09</span><h3>Guarda-corpos &amp; fechamentos</h3><p>Guarda-corpos de vidro, muros de vidro e fechamentos corporativos.</p><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
     </div>
   </div>
 </section>
@@ -476,11 +521,11 @@ footer.site{background:var(--ink);color:#93a8bd;padding-block:clamp(56px,7vw,80p
       <span class="eyebrow on-dark">Como trabalhamos</span>
       <h2>Um processo de engenharia, sem surpresas no canteiro</h2>
     </div>
-    <div class="steps">
-      <div class="pstep reveal"><div class="dot">1</div><h4>Briefing técnico</h4><p>Entendemos a obra, o projeto e os requisitos de desempenho.</p></div>
-      <div class="pstep reveal"><div class="dot">2</div><h4>Projeto &amp; proposta</h4><p>Detalhamento do sistema, especificação e orçamento.</p></div>
-      <div class="pstep reveal"><div class="dot">3</div><h4>Fabricação</h4><p>Produção controlada na área fabril própria.</p></div>
-      <div class="pstep reveal"><div class="dot">4</div><h4>Instalação &amp; entrega</h4><p>Montagem com equipe técnica e acompanhamento.</p></div>
+    <div class="tl">
+      <div class="tl-item reveal"><div class="tl-num">1</div><div class="tl-card"><h4>Briefing técnico</h4><p>Entendemos a obra, o projeto e os requisitos de desempenho.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-num">2</div><div class="tl-card"><h4>Projeto &amp; proposta</h4><p>Detalhamento do sistema, especificação e orçamento.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-num">3</div><div class="tl-card"><h4>Fabricação</h4><p>Produção controlada na área fabril própria.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-num">4</div><div class="tl-card"><h4>Instalação &amp; entrega</h4><p>Montagem com equipe técnica e acompanhamento.</p></div></div>
     </div>
   </div>
 </section>
@@ -523,22 +568,6 @@ footer.site{background:var(--ink);color:#93a8bd;padding-block:clamp(56px,7vw,80p
       <figure class="pf reveal"><img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/concentrix-1.jpg" alt="Fachada Concentrix" loading="lazy"><figcaption><span class="s">Corporativo</span><span class="t">Concentrix</span></figcaption></figure>
       <figure class="pf reveal"><img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/nat.jpg" alt="Fachada Spider Glass" loading="lazy"><figcaption><span class="s">Vidro estrutural</span><span class="t">Spider Glass</span></figcaption></figure>
       <figure class="pf reveal"><img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/3pm.png" alt="Fachada em ACM e vidro" loading="lazy"><figcaption><span class="s">Revestimento</span><span class="t">ACM + Vidro</span></figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- CLIENTES -->
-<section class="section clients">
-  <div class="wrap">
-    <p class="lbl">Empresas que confiaram na engenharia da Sanglass</p>
-    <div class="logos reveal">
-      <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/hospital-albert-sabin.png" alt="Hospital Albert Sabin" loading="lazy">
-      <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/Logo_unimed1.svg_.png" alt="Unimed" loading="lazy">
-      <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/logoTjsp.png" alt="TJSP" loading="lazy">
-      <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/Allianz_Parque_Logo.png" alt="Allianz Parque" loading="lazy">
-      <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/CONCENTRIX-LOGOS-PNG-500x250px.png" alt="Concentrix" loading="lazy">
-      <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/11/CPTM_Logo.svg_.png" alt="CPTM" loading="lazy">
-      <img src="https://sanglassengenharia.com.br/wp-content/uploads/2019/12/Bradesco_logo.png" alt="Bradesco" loading="lazy">
     </div>
   </div>
 </section>
@@ -739,9 +768,19 @@ const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(!en.isIntersecting)r
   requestAnimationFrame(tk);io.unobserve(el);});},{threshold:.6});
 document.querySelectorAll('[data-count]').forEach(c=>io.observe(c));
 
-/* reveal */
+/* reveal + stagger por grupo */
 const rio=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');rio.unobserve(en.target);}})},{threshold:.14});
-document.querySelectorAll('.reveal').forEach(el=>rio.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>{
+  const sibs=[...el.parentElement.children].filter(c=>c.classList.contains('reveal'));
+  const i=Math.max(0,sibs.indexOf(el));
+  el.style.transitionDelay=(Math.min(i,8)*85)+'ms';
+  rio.observe(el);
+});
+
+/* barra de progresso no scroll */
+const pg=document.getElementById('pg');
+const setPg=()=>{const h=document.documentElement,mx=h.scrollHeight-h.clientHeight;pg.style.width=(mx>0?(h.scrollTop/mx)*100:0)+'%';};
+setPg();addEventListener('scroll',setPg,{passive:true});addEventListener('resize',setPg,{passive:true});
 </script>
 </body>
 </html>
