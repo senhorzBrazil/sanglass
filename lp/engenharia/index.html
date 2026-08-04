@@ -132,24 +132,35 @@ header.site.solid .nav-links a:hover{color:var(--navy)}
 header.site.solid .menu-toggle{color:var(--navy)}
 .menu-toggle svg{width:28px;height:28px}
 
-/* ============ HERO ============ */
-.hero{position:relative;min-height:clamp(620px,92vh,940px);display:flex;align-items:flex-end;
+/* ============ HERO (alto + faixa de imagens na 1a dobra) ============ */
+.hero{position:relative;min-height:100dvh;display:flex;flex-direction:column;
   margin-top:-76px;padding-top:76px;color:#fff;overflow:hidden;background:var(--navy)}
-.hero__media{position:absolute;inset:0;z-index:0}
-.hero__media img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
-.hero__media::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(8,26,46,.55) 0%,rgba(8,26,46,.35) 30%,rgba(8,26,46,.82) 78%,rgba(8,22,40,.96) 100%),
-  linear-gradient(105deg,rgba(8,26,46,.7) 0%,rgba(8,26,46,.15) 55%,transparent 100%)}
-.hero__inner{position:relative;z-index:2;width:100%;padding-block:clamp(48px,7vw,90px)}
-.hero h1{font-size:clamp(2.5rem,6.4vw,5rem);font-weight:800;letter-spacing:-.04em;max-width:16ch;margin:22px 0 24px}
+.hero__bg{position:absolute;inset:0;z-index:0}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.16}
+.hero__bg::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(920px 540px at 80% 4%,rgba(43,178,236,.20),transparent 60%),
+  linear-gradient(180deg,rgba(10,37,67,.86) 0%,rgba(9,26,46,.9) 52%,rgba(8,22,40,.97) 100%)}
+.hero__top{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding-block:clamp(30px,4vw,54px)}
+.hero h1{font-size:clamp(2.4rem,5.9vw,4.6rem);font-weight:800;letter-spacing:-.04em;max-width:17ch;margin:22px 0 22px}
 .hero h1 em{font-style:normal;color:var(--azure-400)}
-.hero .lead{font-size:clamp(1.08rem,1.7vw,1.32rem);color:#c9dcec;max-width:60ch;margin-bottom:34px;font-weight:400}
+.hero .lead{font-size:clamp(1.05rem,1.6vw,1.28rem);color:#c9dcec;max-width:60ch;margin-bottom:30px;font-weight:400}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.hero-scroll{position:absolute;right:var(--gut);bottom:34px;z-index:2;display:flex;flex-direction:column;
-  align-items:center;gap:10px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
-.hero-scroll .bar{width:1px;height:46px;background:linear-gradient(rgba(255,255,255,.5),transparent);animation:drop 2.2s var(--ease) infinite}
-@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-@media(max-width:760px){.hero-scroll{display:none}}
+.hero__strip{position:relative;z-index:2;padding-bottom:clamp(26px,4vw,50px)}
+.hero__strip .row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.htile{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/10;
+  box-shadow:0 26px 54px -26px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.1)}
+.htile img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.htile:hover img{transform:scale(1.06)}
+.htile::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 42%,rgba(8,22,40,.8))}
+.htile figcaption{position:absolute;left:16px;bottom:13px;z-index:2}
+.htile .s{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--azure-400);font-weight:700}
+.htile .t{display:block;font-size:.98rem;font-weight:600;color:#fff;letter-spacing:-.01em}
+@media(max-width:760px){
+  .hero{min-height:auto;padding-top:92px}
+  .hero__top{padding-top:16px}
+  .hero__strip .row{grid-template-columns:1fr 1fr;gap:10px}
+  .hero__strip .htile:nth-child(3){grid-column:span 2;aspect-ratio:16/7}
+}
 
 /* ============ AUTHORITY STRIP ============ */
 .authority{background:var(--ink);color:#fff}
@@ -373,10 +384,8 @@ footer.site{background:var(--ink);color:#93a8bd;padding-block:clamp(56px,7vw,80p
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero__media">
-    <img src="/lp/engenharia/assets/portfolio-albert-sabin.jpg" alt="Fachada de vidro em edifício corporativo">
-  </div>
-  <div class="wrap hero__inner">
+  <div class="hero__bg"><img src="/lp/engenharia/assets/hero-bg.jpg" alt=""></div>
+  <div class="wrap hero__top">
     <span class="eyebrow on-dark">Para construtoras, incorporadoras e arquitetos</span>
     <h1>Um só parceiro de engenharia, <em>do projeto à entrega</em> da sua obra.</h1>
     <p class="lead">Projeto, fabricação, fornecimento e instalação da envoltória do edifício sob um único contrato — menos interfaces no canteiro, prazo previsível e a responsabilidade técnica concentrada em quem entende de grandes obras.</p>
@@ -388,7 +397,13 @@ footer.site{background:var(--ink);color:#93a8bd;padding-block:clamp(56px,7vw,80p
       </button>
     </div>
   </div>
-  <div class="hero-scroll"><span>rolar</span><span class="bar"></span></div>
+  <div class="wrap hero__strip">
+    <div class="row">
+      <figure class="htile"><img src="/lp/engenharia/assets/portfolio-albert-sabin.jpg" alt="Fachada de vidro Hospital Albert Sabin"><figcaption><span class="s">Saúde</span><span class="t">Hospital Albert Sabin</span></figcaption></figure>
+      <figure class="htile"><img src="/lp/engenharia/assets/portfolio-corporativo.jpg" alt="Edifício corporativo com brise e ACM"><figcaption><span class="s">Corporativo</span><span class="t">Brise + ACM</span></figcaption></figure>
+      <figure class="htile"><img src="/lp/engenharia/assets/portfolio-villa-lobos.jpg" alt="Fachada em ACM Shopping Villa-Lobos"><figcaption><span class="s">Varejo</span><span class="t">Fachada em ACM</span></figcaption></figure>
+    </div>
+  </div>
 </section>
 
 <!-- AUTHORITY -->
