@@ -11,8 +11,8 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fale com a Sanglass · Envidraçamento e Vidros</title>
-  <link rel="icon" href="https://sanglass.com.br/wp-content/uploads/2024/05/cropped-Ativo-10-32x32.png">
+  <title>Fale com a San Glass · Envidraçamento e Vidros</title>
+  <link rel="icon" href="/assets/logo-mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -338,16 +338,16 @@
   <div class="bg-orb orb-1"></div>
   <div class="bg-orb orb-2"></div>
 
-  <div class="chat" role="dialog" aria-label="Atendimento Sanglass">
+  <div class="chat" role="dialog" aria-label="Atendimento San Glass">
     <div class="chat-bar"></div>
 
     <header class="chat-head">
       <div class="chat-logo-plate">
-        <img src="https://sanglass.com.br/wp-content/uploads/2024/05/cropped-Ativo-10-270x270.png" alt="Sanglass"
+        <img src="/assets/logo-mark.png" alt="San Glass"
              onerror="this.outerHTML='<span class=&quot;chat-logo-fallback&quot;>SAN</span>'">
       </div>
       <div class="chat-id">
-        <div class="chat-name">Sanglass</div>
+        <div class="chat-name">San Glass</div>
         <div class="chat-status"><b>● online</b> · responde na hora</div>
       </div>
       <span class="chat-tag">Orçamento</span>
@@ -380,7 +380,7 @@
   <script>
     lucide.createIcons();
 
-    // Webhook do Make (cenário Sanglass)
+    // Webhook do Make (cenário San Glass)
     const WEBHOOK_URL = 'https://hook.us2.make.com/a7tnd4qehguhnx3ikobokstu9fcbdxpx';
 
     // ─── Captura de UTMs e parâmetros de rastreio (lidos da URL no carregamento) ───
@@ -400,7 +400,7 @@
       };
     })();
 
-    // Discurso por tipo de necessidade — produtos reais da Sanglass.
+    // Discurso por tipo de necessidade — produtos reais da San Glass.
     const NECESSIDADES = {
       'Envidraçamento de sacada': 'ótima escolha! O <strong>envidraçamento de sacada</strong> protege do vento e da chuva, reduz ruído e ainda valoriza o imóvel — com perfis discretos e vidro de segurança.',
       'Cobertura de vidro':       'excelente! Nossas <strong>coberturas de vidro</strong> trazem luz natural e proteção com muita elegância, sob medida pro seu espaço.',
@@ -502,7 +502,7 @@
 
     /* ─── conversation flow ─── */
     async function start() {
-      await botSay('Olá! 👋 Aqui é o time da <strong>Sanglass</strong>.', 650);
+      await botSay('Olá! 👋 Aqui é o time da <strong>San Glass</strong>.', 650);
       await botSay('Vou te ajudar a montar seu <strong>orçamento de vidros</strong> e já te conecto com nosso time. Leva menos de 1 minuto. 🪟', 1200);
       await askNecessidade();
     }
@@ -533,7 +533,7 @@
       m.className = 'msg bot';
       m.innerHTML = `
         <div class="vagas-card">
-          <div class="vagas-head"><i data-lucide="shield-check"></i><b>Por que a Sanglass</b></div>
+          <div class="vagas-head"><i data-lucide="shield-check"></i><b>Por que a San Glass</b></div>
           <div class="vagas-text">Projeto, fabricação e instalação com <strong>vidro de segurança</strong> e acabamento de alto padrão. Atendemos <strong>São Paulo e Rio de Janeiro</strong>.</div>
           <span class="vagas-iso"><i data-lucide="award"></i>Certificação ISO 9001:2015</span>
         </div>`;
@@ -632,7 +632,7 @@
         telefone: data.telefone,
         email: data.email,
         necessidade: data.necessidade,
-        origem: 'Chat captura Sanglass',
+        origem: 'Chat captura San Glass',
         data_contato: now.toISOString(),
         data_contato_br: now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR'),
         ...TRACKING
@@ -642,8 +642,8 @@
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', {
           content_name: data.necessidade,
-          content_category: 'Sanglass',
-          origem: 'Chat captura Sanglass'
+          content_category: 'San Glass',
+          origem: 'Chat captura San Glass'
         });
       }
 

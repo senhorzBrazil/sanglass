@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0c2949">
-<title>Solicite seu orçamento | Sanglass Engenharia</title>
+<title>Solicite seu orçamento | San Glass Engenharia</title>
 <meta name="description" content="Fachada, pele de vidro, sacada e cobertura de vidro com engenharia especializada. Responda algumas perguntas e fale com nossa equipe.">
 
 <!-- Meta Pixel Code -->
@@ -172,8 +172,8 @@ h1,h2{line-height:1.18;letter-spacing:-.01em;font-weight:800}
   <div class="topbar">
     <div class="progress"><i id="bar"></i></div>
     <div class="logo">
-      <img src="https://sanglass.com.br/wp-content/uploads/2024/05/cropped-Ativo-10-270x270.png" alt="Sanglass Engenharia"
-           onerror="this.outerHTML='<span class=&quot;fallback&quot;>SANGLASS</span>'">
+      <img src="/assets/logo-full.webp" alt="San Glass Engenharia"
+           onerror="this.outerHTML='<span class=&quot;fallback&quot;>SAN GLASS</span>'">
     </div>
   </div>
 
@@ -183,7 +183,7 @@ h1,h2{line-height:1.18;letter-spacing:-.01em;font-weight:800}
     <!-- 0 — Welcome -->
     <section class="step active" data-step="0">
       <div class="step-inner">
-        <span class="eyebrow">Sanglass Engenharia • +23 anos</span>
+        <span class="eyebrow">San Glass Engenharia • +23 anos</span>
         <h1>Qualidade, agilidade e engenharia do projeto à instalação</h1>
         <ul class="benefits">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Atendimento por engenheiros especializados</li>
@@ -305,7 +305,7 @@ h1,h2{line-height:1.18;letter-spacing:-.01em;font-weight:800}
 
 <!-- Splash -->
 <div class="splash" id="splash">
-  <img src="https://sanglass.com.br/wp-content/uploads/2024/05/cropped-Ativo-10-270x270.png" alt="Sanglass" onerror="this.style.display='none'">
+  <img src="/assets/logo-full.webp" alt="San Glass" onerror="this.style.display='none'">
   <div class="bar"><i></i></div>
   <p>Carregando…</p>
 </div>
@@ -416,7 +416,7 @@ document.querySelectorAll('.options[data-auto]').forEach(group => {
 
 /* ===== Finish: pixel + webhook + WhatsApp ===== */
 function buildWaUrl(){
-  let msg = `Olá! Gostaria de um orçamento na Sanglass.%0A%0A`;
+  let msg = `Olá! Gostaria de um orçamento na San Glass.%0A%0A`;
   msg += `*Nome:* ${data.nome}%0A`;
   msg += `*WhatsApp:* ${data.telefone}%0A`;
   msg += `*Serviço:* ${data.servico}%0A`;
@@ -429,7 +429,7 @@ function finish(){
   // Evento de Lead da Meta
   if(typeof fbq === 'function'){
     fbq('track', 'Lead', {
-      content_name: 'Quiz Orçamento Sanglass',
+      content_name: 'Quiz Orçamento San Glass',
       region: data.regiao,
       service: data.servico
     });
@@ -447,7 +447,7 @@ function finish(){
   fetch(WEBHOOK_URL, {
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ ...data, origem:'Quiz Orçamento Sanglass' })
+    body: JSON.stringify({ ...data, origem:'Quiz Orçamento San Glass' })
   }).catch(() => {});
 
   // Tela final
