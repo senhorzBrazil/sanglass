@@ -14,6 +14,15 @@
 <meta property="og:description" content="Engenharia de fachadas para construtoras, incorporadoras e arquitetos. Projeto, fabricação e instalação de fachadas de vidro, pele de vidro, Structural Glazing, ACM, esquadrias e coberturas.">
 <meta property="og:locale" content="pt_BR">
 
+<!-- Google tag (gtag.js) - Google Ads San Glass B2B -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18362953248"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18362953248');
+</script>
+
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -759,6 +768,34 @@ const WHATS_NUMBER = '5511953720072';
 const WEBHOOK_URL  = 'https://hook.us2.make.com/a7tnd4qehguhnx3ikobokstu9fcbdxpx';
 const ORIGEM       = 'LP Institucional B2B San Glass';
 
+/* ---------- Google Ads (conta B2B 357-244-3674) ---------- */
+const GADS_LEAD = 'AW-18362953248/iVcFCLij0uMcEKDckbRE';
+const GADS_WA   = 'AW-18362953248/COLAR_LABEL_WHATSAPP';
+function gadsConv(sendTo){
+  if(!sendTo || sendTo.indexOf('COLAR_LABEL') > -1) return;
+  if(typeof gtag === 'function'){
+    gtag('event', 'conversion', { 'send_to': sendTo });
+  }
+}
+
+/* ---------- Captura de gclid/UTM (first-touch, persistida na sessao) ---------- */
+const TRACKING = (function(){
+  const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','fbclid'];
+  let data = {};
+  try { data = JSON.parse(sessionStorage.getItem('sg_tracking') || '{}'); } catch(e){}
+  const p = new URLSearchParams(location.search);
+  keys.forEach(k => { const v = p.get(k); if(v) data[k] = v; });
+  try { sessionStorage.setItem('sg_tracking', JSON.stringify(data)); } catch(e){}
+  return data;
+})();
+
+/* ---------- Conversao secundaria: clique em link direto de WhatsApp ---------- */
+document.addEventListener('click', function(e){
+  const a = e.target.closest && e.target.closest('a[href*="api.whatsapp.com"], a[href*="wa.me"]');
+  if(a) gadsConv(GADS_WA);
+}, true);
+
+
 /* ---------- Mobile menu ---------- */
 const toggle = document.getElementById('menuToggle');
 const links = document.getElementById('navLinks');
@@ -830,6 +867,9 @@ document.getElementById('formWa').addEventListener('submit', e => {
 
   const solucao = form.querySelector('[name="solucao"]').value;
 
+  /* Conversao Google Ads */
+  gadsConv(GADS_LEAD);
+
   /* Meta Lead event */
   if(typeof fbq === 'function'){
     fbq('track', 'Lead', { content_name: 'Orçamento Fachada B2B', perfil: perfil.value });
@@ -845,7 +885,9 @@ document.getElementById('formWa').addEventListener('submit', e => {
       empresa: empresa.value.trim(),
       perfil: perfil.value,
       solucao: solucao,
-      origem: ORIGEM
+      origem: ORIGEM,
+      pagina: location.pathname,
+      ...TRACKING
     })
   }).catch(() => {});
 
