@@ -5,7 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guarda-Corpo de Vidro (Parapeito) para Obras | San Glass Engenharia</title>
 <meta name="description" content="Projeto, memorial de cálculo, fabricação e montagem própria de guarda-corpo e parapeito de vidro para construtoras, condomínios e arquitetos. NBR 14718, NBR 7199, ISO 9001 e ART.">
+<!-- Google Ads (conta B2B 357-244-3674) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18362953248"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18362953248');
+</script>
+<!-- End Google Ads -->
 <!-- Meta Pixel -->
+
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','189231429083433');fbq('track','PageView');</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=189231429083433&ev=PageView&noscript=1"/></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +108,7 @@ overlay.querySelector('form').addEventListener('submit',function(e){
   var lines=[MSG[intent],'Nome: '+f.nome.value,'WhatsApp: '+f.telefone.value,'Empresa: '+f.empresa.value,'Perfil: '+f.perfil.value];
   if(f.solucao.value)lines.push('Solução: '+f.solucao.value);
   if(window.fbq)fbq('track','Lead',{content_name:'Guarda-Corpo de Vidro',perfil:f.perfil.value});
+  if(typeof gtag==='function')gtag('event','conversion',{'send_to':'AW-18362953248/iVcFCLij0uMcEKDckbRE'});
   window.open('https://wa.me/5511986200619?text='+encodeURIComponent(lines.join('\n')),'_blank');
   close_();
 });
