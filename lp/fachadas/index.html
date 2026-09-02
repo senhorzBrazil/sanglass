@@ -89,6 +89,18 @@
 var overlay=document.getElementById('sg-modal');
 var MSG={orcamento:"Olá, San Glass. Quero enviar as plantas da obra para orçamento de fachada em vidro.",portfolio:"Olá, San Glass. Quero receber o portfólio completo de obras de fachada."};
 var intent='orcamento';
+var WEBHOOK_URL='https://hook.us2.make.com/a7tnd4qehguhnx3ikobokstu9fcbdxpx';
+var ORIGEM='LP Fachadas e Pele de Vidro B2B San Glass';
+/* Captura de gclid/UTM (first-touch, persistida na sessao) */
+var TRACKING=(function(){
+  var keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','fbclid'];
+  var data={};
+  try{data=JSON.parse(sessionStorage.getItem('sg_tracking')||'{}');}catch(e){}
+  var p=new URLSearchParams(location.search);
+  keys.forEach(function(k){var v=p.get(k);if(v)data[k]=v;});
+  try{sessionStorage.setItem('sg_tracking',JSON.stringify(data));}catch(e){}
+  return data;
+})();
 function open_(i){intent=i;overlay.classList.remove('hidden');overlay.classList.add('flex');document.body.style.overflow='hidden';}
 function close_(){overlay.classList.add('hidden');overlay.classList.remove('flex');document.body.style.overflow='';}
 document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
@@ -107,6 +119,16 @@ overlay.querySelector('form').addEventListener('submit',function(e){
   if(!ok)return;
   var lines=[MSG[intent],'Nome: '+f.nome.value,'WhatsApp: '+f.telefone.value,'Empresa: '+f.empresa.value,'Perfil: '+f.perfil.value];
   if(f.solucao.value)lines.push('Solução: '+f.solucao.value);
+  /* Envia o lead para o webhook do Make */
+  fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({
+    nome:f.nome.value.trim(),
+    telefone:f.telefone.value.trim(),
+    empresa:f.empresa.value.trim(),
+    perfil:f.perfil.value,
+    solucao:f.solucao.value,
+    origem:ORIGEM,
+    pagina:location.pathname
+  },TRACKING))}).catch(function(){});
   if(window.fbq)fbq('track','Lead',{content_name:'Fachadas e Pele de Vidro',perfil:f.perfil.value});
   if(typeof gtag==='function')gtag('event','conversion',{'send_to':'AW-18362953248/iVcFCLij0uMcEKDckbRE'});
   window.open('https://wa.me/5511986200619?text='+encodeURIComponent(lines.join('\n')),'_blank');
